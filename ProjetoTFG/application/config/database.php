@@ -79,7 +79,7 @@ $db['default'] = array(
 	'username' => '',
 	'password' => '',
 	'database' => '',
-	'dbdriver' => 'mysql',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
@@ -101,7 +101,7 @@ $db['desenvolvimento'] = array(
     'username' => 'root',
     'password' => 'lab2208',
     'database' => 'TFG_Project_Desenvolvimento',
-    'dbdriver' => 'mysql',
+    'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),
@@ -123,7 +123,7 @@ $db['teste'] = array(
     'username' => 'root',
     'password' => 'lab2208',
     'database' => 'TFG_Project_Teste',
-    'dbdriver' => 'mysql',
+    'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),
@@ -145,7 +145,7 @@ $db['producao'] = array(
     'username' => 'root',
     'password' => 'lab2208',
     'database' => 'TFG_Project',
-    'dbdriver' => 'mysql',
+    'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),
@@ -160,3 +160,4 @@ $db['producao'] = array(
     'failover' => array(),
     'save_queries' => TRUE
 );
+
