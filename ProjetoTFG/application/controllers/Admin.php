@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     {
         public function HomeAdmin()
         {
+            $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Home";
             $this->load->view('commons/header',$data);
             $this->load->view('home_admin');

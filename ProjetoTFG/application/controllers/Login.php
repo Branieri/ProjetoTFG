@@ -23,9 +23,12 @@ class Login extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('login');
         } else {
+            foreach ($query as $row) :
+                $nome = $row['Nome'];
+            endforeach;
             if ($query) {
                 $data = array(
-                    'ra' => $this->input->post('ra'),
+                    'nome' => $nome,
                     'logged' => true
                 );
                 $this->session->set_userdata($data);
@@ -33,14 +36,12 @@ class Login extends CI_Controller
             } else {
                 redirect($this->index());
             }
-
         }
-    }
 
+    }
     public function logout()
     {
-        $data['logged'] = false;
-        $this->session->set_userdata($data);
+        $this->session->set_userdata('logged', false);
         redirect($this->index());
     }
 }

@@ -11,7 +11,7 @@
             <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
         </div>
         <div class="w3-col s8">
-            <span>Welcome, <strong>Bruno</strong></span><br>
+            <span>Welcome, <strong><?php echo $nome?></strong></span><br>
             <!--<a href="#" class="w3-hover-none w3-hover-text-red w3-show-inline-block"><i class="fa fa-envelope"></i></a>-->
             <a href="#" class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i class="fa fa-user"></i></a>
             <a href="#" class="w3-hover-none w3-hover-text-blue w3-show-inline-block"><i class="fa fa-cog"></i></a>

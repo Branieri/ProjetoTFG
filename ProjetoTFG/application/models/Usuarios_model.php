@@ -15,7 +15,7 @@ class Usuarios_model extends MY_Model
         $this->db->where('Senha', $senha);
         $query = $this->db->get($this->table);
         if ($query->num_rows() > 0) {
-            return true;
+            return $query->result_array();
         } else {
             return null;
         }
