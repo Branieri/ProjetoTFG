@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function CadUsuario()
         {
+            $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Usuários";
             $this->load->model('usuarios_model');
             $data['usuarios'] = $this->usuarios_model->GetAll('Nome');
