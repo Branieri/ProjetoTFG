@@ -21,7 +21,7 @@ class Login extends CI_Controller
         $query = $this->usuarios_model->Login($ra, $senha);
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('login');
+            $this->load->view('login_view');
         } else {
             foreach ($query as $row) :
                 $nome = $row['Nome'];
@@ -32,7 +32,7 @@ class Login extends CI_Controller
                     'logged' => true
                 );
                 $this->session->set_userdata($data);
-                redirect('home_admin');
+                redirect('homeadmin_view');
             } else {
                 redirect($this->index());
             }

@@ -1,7 +1,7 @@
 <!-- Top container -->
 <div class="w3-container w3-top w3-black w3-large w3-padding" style="z-index:4">
     <button class="w3-btn w3-hide-large w3-padding-0 w3-hover-text-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-    <span class="w3-right">Logo</span>
+    <span class="w3-right">UNIFEI</span>
 </div>
 
 <!-- Sidenav/menu -->
@@ -19,11 +19,11 @@
     </div>
     <hr>
     <div class="w3-container">
-        <h5>Dashboard</h5>
+        <h5>Menu</h5>
     </div>
     <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="<?=base_url('home_admin')?>" class="w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Home</a>
-    <a href="<?=base_url('cadusuario')?>" class="w3-padding"><i class="fa fa-user fa-fw"></i>  Usuários</a>
+    <a href="<?=base_url('homeadmin_view')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'HomeAdmin') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-home fa-fw"></i>  Home</a>
+    <a href="<?=base_url('usuarios_view')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'CadUsuario') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-user fa-fw"></i>  Usuários</a>
     <a href="<?=base_url()?>" class="w3-padding"><i class="fa fa-book fa-fw"></i>  Cursos</a>
     <a href="<?=base_url()?>" class="w3-padding"><i class="fa fa-cog fa-fw"></i>  Configurações</a>
     <a href="<?=base_url('logout')?>" class="w3-padding"><i class="fa fa-remove fa-fw"></i>  Sair</a><br><br>

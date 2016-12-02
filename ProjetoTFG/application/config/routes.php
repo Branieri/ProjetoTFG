@@ -55,6 +55,6 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['home_admin'] = 'Admin/HomeAdmin';
-$route['cadusuario'] = 'Admin/CadUsuario';
+$route['homeadmin_view'] = 'Admin/HomeAdmin';
+$route['usuarios_view'] = 'Admin/CadUsuario';
 $route['logout'] = 'Login/logout';

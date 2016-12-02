@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Home";
             $this->load->view('commons/header',$data);
-            $this->load->view('home_admin');
+            $this->load->view('homeadmin_view');
             $this->load->view('commons/footer');
         }
 
@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->model('usuarios_model');
             $data['usuarios'] = $this->usuarios_model->GetAll('Nome');
             $this->load->view('commons/header',$data);
-            $this->load->view('cadusuario');
+            $this->load->view('usuarios_view');
             $this->load->view('commons/footer');
         }
 
