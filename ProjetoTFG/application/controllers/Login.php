@@ -10,7 +10,6 @@ class Login extends CI_Controller
 
     public function index()
     {
-        $this->load->library('form_validation');
         $this->form_validation->set_rules('ra', 'RA', 'required');
         $this->form_validation->set_rules('senha', 'Senha', 'required');
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
@@ -39,6 +38,7 @@ class Login extends CI_Controller
         }
 
     }
+
     public function logout()
     {
         $this->session->set_userdata('logged', false);

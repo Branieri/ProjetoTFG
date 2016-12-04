@@ -7,7 +7,7 @@
 
 <script>
     function Novo_Usuario() {
-        window.open('<?=base_url('form_newusuario')?>','Novo Usuário')
+        window.open('<?=base_url('cadusuario_form_view')?>','Novo Usuário')
     }
 
 </script>

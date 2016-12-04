@@ -56,5 +56,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['homeadmin_view'] = 'Admin/HomeAdmin';
-$route['usuarios_view'] = 'Admin/CadUsuario';
+$route['usuarios_view'] = 'Admin/Usuario';
+$route['cadusuario_form_view'] = 'Admin/CadUsuario';
 $route['logout'] = 'Login/logout';
