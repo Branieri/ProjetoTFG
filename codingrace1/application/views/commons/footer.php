@@ -30,6 +30,23 @@
         mySidenav.style.display = "none";
         overlayBg.style.display = "none";
     }
+
+    function ValidaForm() {
+        email = formsalvar.email;
+        confirmar_email = formsalvar.confirmar_email;
+        compara = email.localeCompare(confirmar_email)
+        if(compara == -1)
+        {
+            alert("Email deve ser igual");
+            return false
+        }
+
+        formsalvar.submit();
+    }
+    
+    function PegaDados() {
+        document.getElementById('editar').style.display='block'
+    }
 </script>
 
 </body>

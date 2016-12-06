@@ -22,8 +22,8 @@
         <h5>Menu</h5>
     </div>
     <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="<?=base_url('homeadmin_view')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'HomeAdmin') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-home fa-fw"></i>  Home</a>
-    <a href="<?=base_url('usuarios_view')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'CadUsuario') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-users fa-fw"></i>  Usuários</a>
+    <a href="<?=base_url('homeadmin')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'HomeAdmin') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-home fa-fw"></i>  Home</a>
+    <a href="<?=base_url('usuarios')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'CadUsuario') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-users fa-fw"></i>  Usuários</a>
     <a href="<?=base_url()?>" class="w3-padding"><i class="fa fa-book fa-fw"></i>  Cursos</a>
     <a href="<?=base_url()?>" class="w3-padding"><i class="fa fa-cog fa-fw"></i>  Configurações</a>
     <a href="<?=base_url('logout')?>" class="w3-padding"><i class="fa fa-remove fa-fw"></i>  Sair</a><br><br>

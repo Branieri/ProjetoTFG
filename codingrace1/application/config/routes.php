@@ -55,7 +55,10 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['homeadmin_view'] = 'Admin/HomeAdmin';
-$route['usuarios_view'] = 'Admin/Usuario';
-$route['cadusuario_form_view'] = 'Admin/CadUsuario';
+$route['homeadmin'] = 'Admin/HomeAdmin';
+$route['editar/(:num)'] = 'Admin/EditaUsuario/$1';
+$route['excluir/(:num)'] = 'Admin/ExcluiUsuario/$1';
+$route['usuarios'] = 'Admin/Usuario';
+$route['salvar'] = 'Admin/CadUsuario';
+$route['atualizar'] = 'Admin/AtualizaUsuario';
 $route['logout'] = 'Login/logout';

@@ -31,9 +31,10 @@ class Login extends CI_Controller
                     'logged' => true
                 );
                 $this->session->set_userdata($data);
-                redirect('homeadmin_view');
+                redirect('homeadmin');
             } else {
-                redirect($this->index());
+                $this->session->set_flashdata('usuario_naoencontrado', 'Usuário não encontrado!');
+                redirect('Login');
             }
         }
 
