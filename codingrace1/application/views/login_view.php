@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <body>
 
-        <header class="w3-container w3-teal">
-            <h1>Login</h1>
+        <header class="w3-container w3-teal w3-center">
+            <h1>CodingRace</h1>
         </header>
 
         <div class="w3-container w3-half w3-margin-top">
@@ -15,7 +15,6 @@
                 <p><?php echo $this->session->flashdata('usuario_naoencontrado'); ?></p>
             <?php endif; ?>
             <form class="w3-container w3-card-4" method="post" enctype="multipart/form-data">
-
                 <p>
                     <input class="w3-input" type="text" style="width:90%" name="ra" id="ra" value="<?=set_value('ra')?>">
                     <label class="w3-label w3-validate">RA</label></p>

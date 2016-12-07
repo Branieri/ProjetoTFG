@@ -34,8 +34,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function CadUsuario()
         {
             $this->load->model('usuarios_model');
-            //$validacao = self::Validar();
+            $validacao = self::Validar('novo_usuario');
 
+            if ($validacao){
                 $nome = $this->input->post('nome');
                 $senha = $this->input->post('senha');
                 $email = $this->input->post('email');
@@ -56,14 +57,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $this->session->set_flashdata('success', 'Usuário inserido com sucesso!');
                     redirect('usuarios');
                 }
+            }else{
+                $data['nome'] = $this->session->userdata('nome');
+                $data['title'] = "Projeto TFG - Novo Usuário";
 
-            $this->load->view('usuarios_view');
+                /** Carrega a view */
+                $this->load->view('commons/header',$data);
+                $this->load->view('novousuario_view');
+                $this->load->view('commons/footer');
+            }
         }
 
         public function AtualizaUsuario()
         {
-
-
                 $nome = $this->input->post('nome');
                 $email = $this->input->post('email');
                 $dados_usuario = array(
@@ -98,16 +104,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('editar',$dados);
         }
 
-        public function Validar()
+        public function Validar($operacao)
         {
-            $this->form_validation->set_rules('ra', 'RA', 'required|is_unique[Usuario.RA]');
-            $this->form_validation->set_rules('nome', 'Nome', 'required');
-            $this->form_validation->set_rules('senha', 'Senha', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required');
-            $this->form_validation->set_rules('confirmar_email', 'Confirmar Email', 'required|matches[email]');
-            $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-
-
+            if($operacao == 'novo_usuario') {
+                $this->form_validation->set_rules('ra', 'RA', 'required|is_unique[Usuario.RA]');
+                $this->form_validation->set_rules('nome', 'Nome', 'required');
+                $this->form_validation->set_rules('senha', 'Senha', 'required');
+                $this->form_validation->set_rules('email', 'Email', 'required');
+                $this->form_validation->set_rules('confirmar_email', 'Confirmar Email', 'required|matches[email]');
+                $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+            }
             return $this->form_validation->run();
         }
 
