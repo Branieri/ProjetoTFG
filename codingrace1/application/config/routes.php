@@ -55,10 +55,22 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/** Rotas Home */
 $route['homeadmin'] = 'Admin/HomeAdmin';
-$route['editar/(:num)'] = 'Admin/EditaUsuario/$1';
-$route['excluir/(:num)'] = 'Admin/ExcluiUsuario/$1';
+
+/** Rotas Usuários */
 $route['usuarios'] = 'Admin/Usuario';
-$route['salvar'] = 'Admin/CadUsuario';
-$route['atualizar'] = 'Admin/AtualizaUsuario';
+$route['editarusuario/(:num)'] = 'Admin/EditaUsuario/$1';
+$route['excluirusuario/(:num)'] = 'Admin/ExcluiUsuario/$1';
+$route['salvarusuario'] = 'Admin/CadUsuario';
+$route['atualizarusuario'] = 'Admin/AtualizaUsuario';
+
+/** Rotas Cursos */
+$route['cursos'] = 'Admin/Cursos';
+$route['editarcurso/(:num)'] = 'Admin/EditaCurso/$1';
+$route['excluircurso/(:num)'] = 'Admin/ExcluiCurso/$1';
+$route['salvarcurso'] = 'Admin/CadCurso';
+$route['atualizarcurso'] = 'Admin/AtualizaCurso';
+
+/** Rota Logout */
 $route['logout'] = 'Login/logout';

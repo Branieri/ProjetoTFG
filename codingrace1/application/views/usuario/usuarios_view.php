@@ -26,30 +26,13 @@
                                 <td><?=$row['Nome']?></td>
                                 <td><?=$row['RA']?></td>
                                 <td><?=$row['Email']?></td>
-                                <td><button onclick="PegaDados(this)">Editar</button><button>Excluir</button></td>
+                                <td><a href="<?=base_url('editarusuario')."/".$row['RA']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirusuario')."/".$row['RA']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
                             </tr>
                         <?php endforeach;?>
                     <?php endif;?>
                 </tbody>
             </table>
-            <button onclick="location.href='<?php echo base_url('salvar');?>'" class="w3-btn w3-black w3-large">Novo Usuário</button>
-
-            <div id="editar" class="w3-modal">
-                <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
-                    <form class="w3-container" method="post" action="<?=base_url('atualizar')?>" enctype="multipart/form-data">
-                        <div class="w3-section">
-                            <label><b>Nome</b></label>
-                            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Digite o Nome" name="nome" id="nome" value="">
-                            <label><b>Email</b></label>
-                            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Digite o Email" name="email" id="email" value="<?=$row['Email']?>">
-                            <button class="w3-btn-block w3-black w3-section w3-padding" type="submit" value="salvar">Atualizar</button>
-                        </div>
-                    </form>
-                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                        <button onclick="document.getElementById('editar').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
-                    </div>
-                </div>
-            </div>
+            <button onclick="location.href='<?php echo base_url('salvarusuario');?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-user-plus"></i></button>
 
             <?php if ($this->session->flashdata('error') == TRUE): ?>
                 <p><?php echo $this->session->flashdata('error'); ?></p>
@@ -57,7 +40,6 @@
             <?php if ($this->session->flashdata('success') == TRUE): ?>
                 <p><?php echo $this->session->flashdata('success'); ?></p>
             <?php endif; ?>
-
         </div>
 
 

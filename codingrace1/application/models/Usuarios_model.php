@@ -21,6 +21,32 @@ class Usuarios_model extends MY_Model
         }
     }
 
+    function GetByRA($ra) {
+        if(is_null($ra))
+            return false;
+        $this->db->where('RA', $ra);
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
+    function AtualizaUsuario($ra, $data) {
+        if(is_null($ra) || !isset($data))
+            return false;
+        $this->db->where('RA', $ra);
+        return $this->db->update($this->table, $data);
+    }
+
+    function ExcluirUsuario($ra) {
+        if(is_null($ra))
+            return false;
+        $this->db->where('RA', $ra);
+        return $this->db->delete($this->table);
+    }
+
     public function logged()
     {
         $logged = $this->session->userdata('logged');

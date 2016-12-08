@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'Usuario') ? base_url('assets/css/Table.css') : null; ?>">
-    <link rel="stylesheet" href="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'CadUsuario') ? base_url('assets/css/form_newusuario.css') : null; ?>">
-
     <style>
         html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </style>
