@@ -12,8 +12,8 @@
                     </div>
                     <div class="w3-clear"></div>
                     <h4>Messages</h4>
-                <!--</div>-->
-            </div>
+                </div>
+            <!--</div>-->
             <div class="w3-quarter">
                 <div class="w3-container w3-blue w3-padding-16">
                     <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
