@@ -7,7 +7,7 @@
 
     <?php $this->load->view('commons/menupagina')?>
 
-    <div class="w3-container">
+    <div class="w3-container w3-row-padding w3-margin-bottom">
         <table class="w3-table-all">
             <thead>
             <tr class="w3-light-grey">
