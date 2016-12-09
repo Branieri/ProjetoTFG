@@ -1,10 +1,7 @@
-
-            </div>
-
             <!-- Footer -->
             <footer class="w3-container w3-padding-16 w3-light-grey">
                 <h4>CodingRace</h4>
-                <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">Bruno Ranieri</a></p>
             </footer>
 
         <!-- End page content -->
@@ -38,12 +35,10 @@
                 email = formsalvar.email;
                 confirmar_email = formsalvar.confirmar_email;
                 compara = email.localeCompare(confirmar_email)
-                if(compara == -1)
-                {
+                if(compara == -1){
                     alert("Email deve ser igual");
                     return false
                 }
-
                 formsalvar.submit();
             }
 
@@ -51,6 +46,5 @@
                 document.getElementById('editar').style.display='block'
             }
         </script>
-
     </body>
 </html>
