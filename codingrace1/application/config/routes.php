@@ -55,22 +55,57 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/** Rotas para Admin */
+
 /** Rotas Home */
-$route['homeadmin'] = 'Admin/HomeAdmin';
+$route['home_admin'] = 'Admin/HomeAdmin';
 
 /** Rotas Usuários */
-$route['usuarios'] = 'Admin/Usuario';
-$route['editarusuario/(:num)'] = 'Admin/EditaUsuario/$1';
-$route['excluirusuario/(:num)'] = 'Admin/ExcluiUsuario/$1';
-$route['salvarusuario'] = 'Admin/CadUsuario';
-$route['atualizarusuario'] = 'Admin/AtualizaUsuario';
+$route['usuarios_admin'] = 'Admin/Usuarios';
+$route['editarusuario_admin/(:num)'] = 'Admin/EditaUsuario/$1';
+$route['excluirusuario_admin/(:num)'] = 'Admin/ExcluiUsuario/$1';
+$route['salvarusuario_admin'] = 'Admin/CadUsuario';
+$route['atualizarusuario_admin'] = 'Admin/AtualizaUsuario';
 
 /** Rotas Cursos */
-$route['cursos'] = 'Admin/Cursos';
-$route['editarcurso/(:num)'] = 'Admin/EditaCurso/$1';
-$route['excluircurso/(:num)'] = 'Admin/ExcluiCurso/$1';
-$route['salvarcurso'] = 'Admin/CadCurso';
-$route['atualizarcurso'] = 'Admin/AtualizaCurso';
+$route['cursos_admin'] = 'Admin/Cursos';
+$route['editarcurso_admin/(:num)'] = 'Admin/EditaCurso/$1';
+$route['excluircurso_admin/(:num)'] = 'Admin/ExcluiCurso/$1';
+$route['salvarcurso_admin'] = 'Admin/CadCurso';
+$route['atualizarcurso_admin'] = 'Admin/AtualizaCurso';
+
+/** Rotas Tópicos */
+$route['topicos_admin'] = 'Admin/Topicos';
+$route['editartopico_admin/(:num)'] = 'Admin/EditaTopico/$1';
+$route['excluirtopico_admin/(:num)'] = 'Admin/ExcluiTopico/$1';
+$route['salvartopico_admin'] = 'Admin/CadTopico';
+$route['atualizartopico_admin'] = 'Admin/AtualizaTopico';
+
+/** Rotas para Professores */
+
+/** Rotas Home */
+$route['home_professor'] = 'Professor/HomeProfessor';
+
+/** Rotas Usuários */
+$route['usuarios_professor'] = 'Professor/Usuarios';
+$route['editarusuario_professor/(:num)'] = 'Professor/EditaUsuario/$1';
+$route['excluirusuario_professor/(:num)'] = 'Professor/ExcluiUsuario/$1';
+$route['salvarusuario_professor'] = 'Professor/CadUsuario';
+$route['atualizarusuario_professor'] = 'Professor/AtualizaUsuario';
+
+/** Rotas Cursos */
+$route['cursos_professor'] = 'Professor/Cursos';
+$route['editarcurso_professor/(:num)'] = 'Professor/EditaCurso/$1';
+$route['excluircurso_professor/(:num)'] = 'Professor/ExcluiCurso/$1';
+$route['salvarcurso_professor'] = 'Professor/CadCurso';
+$route['atualizarcurso_professor'] = 'Professor/AtualizaCurso';
+
+/** Rotas Tópicos */
+$route['topicos_professor'] = 'Professor/Topicos';
+$route['editartopico_professor/(:num)'] = 'Professor/EditaTopico/$1';
+$route['excluirtopico_professor/(:num)'] = 'Professor/ExcluiTopico/$1';
+$route['salvartopico_professor'] = 'Professor/CadTopico';
+$route['atualizartopico_professor'] = 'Professor/AtualizaTopico';
 
 /** Rota Logout */
 $route['logout'] = 'Login/logout';

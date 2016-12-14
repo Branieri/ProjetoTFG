@@ -28,13 +28,21 @@
                                     <td><?=$row['PIN']?></td>
                                     <td><?=$row['Ano']?></td>
                                     <td><?=$row['Periodo']?></td>
-                                    <td><a href="<?=base_url('editarcurso')."/".$row['PIN']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluircurso')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                    <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                                        <td><a href="<?=base_url('editarcurso_admin')."/".$row['PIN']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluircurso_admin')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                    <?php elseif ($this->router->fetch_class() == 'Professor'): ?>
+                                        <td><a href="<?=base_url('editarcurso_professor')."/".$row['PIN']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a></td>
+                                    <?php endif; ?>
                                 </tr>
                             <?php endforeach;?>
                         <?php endif;?>
                     </tbody>
                 </table>
-                <button onclick="location.href='<?php echo base_url('salvarcurso');?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+                <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                    <button onclick="location.href='<?php echo base_url('salvarcurso_admin');?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+                <?php elseif ($this->router->fetch_class() == 'Professor'): ?>
+                    <button onclick="location.href='<?php echo base_url('salvarcurso_professor');?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+                <?php endif; ?>
 
                 <?php if ($this->session->flashdata('error') == TRUE): ?>
                     <p><?php echo $this->session->flashdata('error'); ?></p>

@@ -3,6 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     class Admin extends MY_Controller
     {
+        public  function __construct()
+        {
+            parent::__construct();
+
+            $usuario = $logged = $this->session->userdata('tipo_usuario');
+            if($usuario == 1 || $usuario == null){
+                echo 'Você não tem permissão para entrar nessa página';
+                die();
+            }elseif ($usuario == 2 || $usuario == null){
+                echo 'Você não tem permissão para entrar nessa página';
+                die();
+            }
+        }
+
         public function HomeAdmin()
         {
             $data['nome'] = $this->session->userdata('nome');
@@ -14,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         /** Funções CRUD Usuários */
 
-        public function Usuario()
+        public function Usuarios()
         {
             /** Carrega funções de busca do BD */
             $this->load->model('usuarios_model');
@@ -63,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $this->load->view('commons/footer');
                 }else{
                     $this->session->set_flashdata('success', 'Usuário inserido com sucesso!');
-                    redirect('usuarios');
+                    redirect('usuarios_admin');
                 }
             }
             $data['nome'] = $this->session->userdata('nome');
@@ -97,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     self::EditaUsuario($ra);
                 } else {
                     $this->session->set_flashdata('success', 'Usuário atualizado com sucesso.');
-                    redirect('usuarios');
+                    redirect('usuarios_admin');
                 }
             }else{
                 self::EditaUsuario($ra);
@@ -111,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->model('usuarios_model');
 
             if(is_null($ra))
-                redirect('usuarios');
+                redirect('usuarios_admin');
 
             $data['usuario'] = $this->usuarios_model->GetByRA($ra);
 
@@ -131,11 +145,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             if(is_null($ra)) {
                 $this->session->set_flashdata('error', 'Não foi possível excluir o usuário.');
-                redirect('usuarios');
+                redirect('usuarios_admin');
             }else{
                 $data['usuario'] = $this->usuarios_model->ExcluirUsuario($ra);
                 $this->session->set_flashdata('success', 'Usuário excluído com sucesso.');
-                redirect('usuarios');
+                redirect('usuarios_admin');
             }
         }
 
@@ -187,7 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $this->load->view('commons/footer');
                 }else{
                     $this->session->set_flashdata('success', 'Curso cadastrado com sucesso!');
-                    redirect('cursos');
+                    redirect('cursos_admin');
                 }
             }
             $data['nome'] = $this->session->userdata('nome');
@@ -204,11 +218,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             if(is_null($pin)) {
                 $this->session->set_flashdata('error', 'Não foi possível excluir o curso.');
-                redirect('cursos');
+                redirect('cursos_admin');
             }else{
                 $data['usuario'] = $this->cursos_model->ExcluirCurso($pin);
                 $this->session->set_flashdata('success', 'Curso excluído com sucesso.');
-                redirect('cursos');
+                redirect('cursos_admin');
             }
         }
 
@@ -235,7 +249,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     self::EditaCurso($pin);
                 } else {
                     $this->session->set_flashdata('success', 'Curso atualizado com sucesso.');
-                    redirect('cursos');
+                    redirect('cursos_admin');
                 }
             }else{
                 self::EditaCurso($pin);
@@ -246,7 +260,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->model('cursos_model');
 
             if(is_null($pin))
-                redirect('cursos');
+                redirect('cursos_admin');
 
             $data['curso'] = $this->cursos_model->GetByPIN($pin);
 
@@ -257,6 +271,123 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('commons/header',$data);
             $this->load->view('curso/editarcurso_view');
             $this->load->view('commons/footer');
+        }
+
+        /** Funções CRUD para Tópicos */
+
+        public function Topicos()
+        {
+            /** Carrega funções de busca do BD */
+            $this->load->model('topicos_model');
+
+            /** Variável com dados para serem passadas para a view */
+            $data['nome'] = $this->session->userdata('nome');
+            $data['title'] = "Projeto TFG - Tópicos";
+
+            // Retorna todos os usuários do BD
+            $data['topicos'] = $this->topicos_model->GetAll('idTopico');
+
+            /** Carrega a view */
+            $this->load->view('commons/header',$data);
+            $this->load->view('topico/topicos_view');
+            $this->load->view('commons/footer');
+        }
+
+        public function CadTopico()
+        {
+            $this->load->model('topicos_model');
+            $validacao = self::Validar('novo_topico');
+
+            if ($validacao){
+                $nome = $this->input->post('nome');
+                $dados_topico = array(
+                    'Nome' => $nome,
+                );
+                $status = $this->topicos_model->Inserir($dados_topico);
+                if(!$status)
+                {
+                    $this->session->set_flashdata('error', 'Não foi possível inserir o tópico!');
+                    $data['nome'] = $this->session->userdata('nome');
+                    $data['title'] = "Projeto TFG - Novo Tópico";
+
+                    /** Carrega a view */
+                    $this->load->view('commons/header',$data);
+                    $this->load->view('topico/novotopico_view');
+                    $this->load->view('commons/footer');
+                }else{
+                    $this->session->set_flashdata('success', 'Tópico inserido com sucesso!');
+                    redirect('topicos_admin');
+                }
+            }
+            $data['nome'] = $this->session->userdata('nome');
+            $data['title'] = "Projeto TFG - Novo Tópico";
+
+            /** Carrega a view */
+            $this->load->view('commons/header',$data);
+            $this->load->view('topico/novotopico_view');
+            $this->load->view('commons/footer');
+        }
+
+        public function AtualizaTopico()
+        {
+            $this->load->model('topicos_model');
+            $validacao = self::Validar('editar_topico');
+            $id = $this->input->post('id');
+
+            if($validacao) {
+                $nome = $this->input->post('nome');
+
+                $dados_topico = array(
+                    'Nome' => $nome,
+                );
+
+                $status = $this->topicos_model->AtualizaTopico($id, $dados_topico);
+
+                if (!$status) {
+                    $this->session->set_flashdata('error', 'Não foi possível atualizar o tópico.');
+                    self::EditaTopico($id);
+                } else {
+                    $this->session->set_flashdata('success', 'Tópico atualizado com sucesso.');
+                    redirect('topicos_admin');
+                }
+            }else{
+                self::EditaTopico($id);
+            }
+
+        }
+
+        public function EditaTopico($id)
+        {
+
+            $this->load->model('topicos_model');
+
+            if(is_null($id))
+                redirect('topicos_admin');
+
+            $data['topico'] = $this->topicos_model->GetById($id);
+
+            $data['nome'] = $this->session->userdata('nome');
+            $data['title'] = "Projeto TFG - Edita Tópico";
+
+            /** Carrega a view */
+            $this->load->view('commons/header',$data);
+            $this->load->view('topico/editartopico_view');
+            $this->load->view('commons/footer');
+
+        }
+
+        public function ExcluiTopico($id)
+        {
+            $this->load->model('topicos_model');
+
+            if(is_null($id)) {
+                $this->session->set_flashdata('error', 'Não foi possível excluir o tópico.');
+                redirect('topicos_admin');
+            }else{
+                $data['topicos'] = $this->topicos_model->ExcluirTopico($id);
+                $this->session->set_flashdata('success', 'Tópico excluído com sucesso.');
+                redirect('topicos_admin');
+            }
         }
 
         public function Validar($operacao)
@@ -285,6 +416,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->form_validation->set_rules('nome', 'Nome', 'required');
                 $this->form_validation->set_rules('ano', 'Ano', 'required');
                 $this->form_validation->set_rules('periodo', 'Periodo', 'required');
+                $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+            }elseif ($operacao == 'novo_topico'){
+                $this->form_validation->set_rules('nome', 'Nome', 'required');
+                $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+            }elseif ($operacao == 'editar_topico'){
+                $this->form_validation->set_rules('nome', 'Nome', 'required');
                 $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
             }
 

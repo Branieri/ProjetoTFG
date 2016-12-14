@@ -54,7 +54,7 @@
 
                 <p class="w3-center">
                     <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Salvar </button>
-                    <button onclick="location.href='<?php echo base_url('usuarios');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
+                    <button onclick="location.href='<?php echo base_url('usuarios_admin');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
                 </p>
             </form>
 

@@ -47,7 +47,11 @@
 
             <p class="w3-center">
                 <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Salvar </button>
-                <button onclick="location.href='<?php echo base_url('cursos');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple"> Cancelar </button>
+                <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                    <button onclick="location.href='<?php echo base_url('cursos_admin');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple"> Cancelar </button>
+                <?php elseif ($this->router->fetch_class() == 'Professor'): ?>
+                    <button onclick="location.href='<?php echo base_url('cursos_professor');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple"> Cancelar </button>
+                <?php endif; ?>
             </p>
         </form>
 

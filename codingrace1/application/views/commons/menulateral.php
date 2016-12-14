@@ -17,14 +17,27 @@
     <div class="w3-container">
         <h5>Menu</h5>
     </div>
-    <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="<?=base_url('homeadmin')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'HomeAdmin') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-home fa-fw"></i>  Home</a>
-    <a href="<?=base_url('usuarios')?>" class="<?=($this->router->fetch_class() == 'Admin' && $this->router->fetch_method() == 'CadUsuario') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-users fa-fw"></i>  Usuários</a>
-    <a href="<?=base_url('cursos')?>" class="w3-padding"><i class="fa fa-book fa-fw"></i>  Cursos</a>
-    <a href="<?=base_url()?>" class="w3-padding"><i class="fa fa-cog fa-fw"></i>  Configurações</a>
-    <a href="<?=base_url('logout')?>" class="w3-padding"><i class="fa fa-remove fa-fw"></i>  Sair</a><br><br>
+    <?php if ($this->router->fetch_class() == 'Admin'): ?>
+        <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+        <a href="<?=base_url('home_admin')?>" class="<?=($this->router->fetch_method() == 'HomeAdmin') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-home fa-fw"></i>  Home</a>
+        <a href="<?=base_url('usuarios_admin')?>" class="<?=($this->router->fetch_method() == 'Usuarios') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-users fa-fw"></i>  Usuários</a>
+        <a href="<?=base_url('cursos_admin')?>" class="<?=($this->router->fetch_method() == 'Cursos') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-book fa-fw"></i>  Cursos</a>
+        <a href="<?=base_url('topicos_admin')?>" class="<?=($this->router->fetch_method() == 'Topicos') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-cog fa-fw"></i>  Tópicos</a>
+        <a href="<?=base_url('logout')?>" class="w3-padding"><i class="fa fa-remove fa-fw"></i>  Sair</a><br><br>
+    <?php elseif ($this->router->fetch_class() == 'Professor'): ?>
+        <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+        <a href="<?=base_url('home_professor')?>" class="<?=($this->router->fetch_method() == 'HomeProfessor') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-home fa-fw"></i>  Home</a>
+        <a href="<?=base_url('usuarios_professor')?>" class="<?=($this->router->fetch_method() == 'Usuarios') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-users fa-fw"></i>  Usuários</a>
+        <a href="<?=base_url('cursos_professor')?>" class="<?=($this->router->fetch_method() == 'Cursos') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-book fa-fw"></i>  Cursos</a>
+        <a href="<?=base_url('topicos_professor')?>" class="<?=($this->router->fetch_method() == 'Topicos') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-cog fa-fw"></i>  Tópicos</a>
+        <a href="<?=base_url('logout')?>" class="w3-padding"><i class="fa fa-remove fa-fw"></i>  Sair</a><br><br>
+    <?php elseif ($this->router->fetch_class() == 'Aluno'): ?>
+        <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+        <a href="<?=base_url('home_aluno')?>" class="<?=($this->router->fetch_method() == 'HomeAluno') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-home fa-fw"></i>  Home</a>
+        <a href="<?=base_url('cursos_aluno')?>" class="<?=($this->router->fetch_method() == 'Cursos') ? 'w3-padding w3-blue' : null; ?>"><i class="fa fa-book fa-fw"></i>  Cursos</a>
+        <a href="<?=base_url('logout')?>" class="w3-padding"><i class="fa fa-remove fa-fw"></i>  Sair</a><br><br>
+    <?php endif; ?>
 </nav>
-
 
 <!-- Overlay effect when opening sidenav on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

@@ -14,7 +14,9 @@
                             <th>Nome</th>
                             <th>RA</th>
                             <th>E-mail</th>
-                            <th>Operações</th>
+                            <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                                <th>Operações</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,18 +28,23 @@
                                     <td><?=$row['Nome']?></td>
                                     <td><?=$row['RA']?></td>
                                     <td><?=$row['Email']?></td>
-                                    <td><a href="<?=base_url('editarusuario')."/".$row['RA']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirusuario')."/".$row['RA']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                    <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                                        <td><a href="<?=base_url('editarusuario_admin')."/".$row['RA']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirusuario_admin')."/".$row['RA']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                    <?php endif; ?>
                                 </tr>
                             <?php endforeach;?>
                         <?php endif;?>
                     </tbody>
                 </table>
-                <button onclick="location.href='<?php echo base_url('salvarusuario');?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-user-plus"></i></button>
 
-                <?php if ($this->session->flashdata('error') == TRUE): ?>
+                <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                    <button onclick="location.href='<?php echo base_url('salvarusuario_admin');?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+                <?php endif; ?>
+
+                <?php if ($this->session->flashdata('error') == TRUE && $this->router->fetch_class() == 'Admin'): ?>
                     <p><?php echo $this->session->flashdata('error'); ?></p>
                 <?php endif; ?>
-                <?php if ($this->session->flashdata('success') == TRUE): ?>
+                <?php if ($this->session->flashdata('success') == TRUE && $this->router->fetch_class() == 'Admin'): ?>
                     <p><?php echo $this->session->flashdata('success'); ?></p>
                 <?php endif; ?>
             </div>

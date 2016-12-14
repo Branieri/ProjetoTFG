@@ -14,7 +14,7 @@
                     <?php endif; ?>
                 </div>
                 <?php echo validation_errors();?>
-                <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=base_url('atualizarcurso')?>">
+                <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('atualizarcurso_admin') : base_url('atualizarcurso_professor');?>">
                     <h2 class="w3-center">Editar Curso</h2>
 
                     <div class="w3-row w3-section">
@@ -47,7 +47,11 @@
 
                     <p class="w3-center">
                         <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Salvar </button>
-                        <button onclick="location.href='<?php echo base_url('cursos');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
+                        <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                            <button onclick="location.href='<?php echo base_url('cursos_admin');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple"> Cancelar </button>
+                        <?php elseif ($this->router->fetch_class() == 'Professor'): ?>
+                            <button onclick="location.href='<?php echo base_url('cursos_professor');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple"> Cancelar </button>
+                        <?php endif; ?>
                     </p>
                 </form>
             </div>
