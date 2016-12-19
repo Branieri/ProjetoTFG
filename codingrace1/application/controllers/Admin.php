@@ -7,7 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
             parent::__construct();
 
-            $usuario = $logged = $this->session->userdata('tipo_usuario');
+            $usuario = $this->session->userdata('tipo_usuario');
+
             if($usuario == 1 || $usuario == null){
                 echo 'Você não tem permissão para entrar nessa página';
                 die();
@@ -21,6 +22,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Home";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+
             $this->load->view('commons/header',$data);
             $this->load->view('homeadmin_view');
             $this->load->view('commons/footer');
@@ -36,6 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             /** Variável com dados para serem passadas para a view */
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Usuários";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             // Retorna todos os usuários do BD
             $data['usuarios'] = $this->usuarios_model->GetAll('Nome');
@@ -70,6 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $this->session->set_flashdata('error', 'Não foi possível inserir o usuário!');
                     $data['nome'] = $this->session->userdata('nome');
                     $data['title'] = "Projeto TFG - Novo Usuário";
+                    $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
                     /** Carrega a view */
                     $this->load->view('commons/header',$data);
@@ -82,6 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Novo Usuário";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             /** Carrega a view */
             $this->load->view('commons/header',$data);
@@ -131,6 +137,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Edita Usuário";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             /** Carrega a view */
             $this->load->view('commons/header',$data);
@@ -162,6 +169,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             /** Variável com dados para serem passadas para a view */
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Cursos";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             // Retorna todos os cursos do BD
             $data['cursos'] = $this->cursos_model->GetAll('PIN');
@@ -194,6 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $this->session->set_flashdata('error', 'Não foi possível cadastrar o curso!');
                     $data['nome'] = $this->session->userdata('nome');
                     $data['title'] = "Projeto TFG - Novo Curso";
+                    $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
                     /** Carrega a view */
                     $this->load->view('commons/header',$data);
@@ -206,6 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Novo Curso";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             /** Carrega a view */
             $this->load->view('commons/header',$data);
@@ -220,7 +230,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->session->set_flashdata('error', 'Não foi possível excluir o curso.');
                 redirect('cursos_admin');
             }else{
-                $data['usuario'] = $this->cursos_model->ExcluirCurso($pin);
+                $data['curso'] = $this->cursos_model->ExcluirCurso($pin);
                 $this->session->set_flashdata('success', 'Curso excluído com sucesso.');
                 redirect('cursos_admin');
             }
@@ -266,6 +276,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Edita Curso";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             /** Carrega a view */
             $this->load->view('commons/header',$data);
@@ -283,6 +294,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             /** Variável com dados para serem passadas para a view */
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Tópicos";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             // Retorna todos os usuários do BD
             $data['topicos'] = $this->topicos_model->GetAll('idTopico');
@@ -309,6 +321,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $this->session->set_flashdata('error', 'Não foi possível inserir o tópico!');
                     $data['nome'] = $this->session->userdata('nome');
                     $data['title'] = "Projeto TFG - Novo Tópico";
+                    $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
                     /** Carrega a view */
                     $this->load->view('commons/header',$data);
@@ -321,6 +334,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Novo Tópico";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             /** Carrega a view */
             $this->load->view('commons/header',$data);
@@ -368,6 +382,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Edita Tópico";
+            $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
 
             /** Carrega a view */
             $this->load->view('commons/header',$data);

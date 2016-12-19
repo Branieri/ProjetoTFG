@@ -4,6 +4,6 @@
         <title>PHP Teste</title>
     </head>
     <body>
-        <?php echo $ra; ?>
+        <?php echo $teste; ?>
     </body>
 </html>

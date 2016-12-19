@@ -28,7 +28,7 @@ class Usuarios_model extends MY_Model
         $this->db->where('RA', $ra);
         $query = $this->db->get($this->table);
         if ($query->num_rows() > 0) {
-            return $query->row_array();
+            return $query->result_array();
         } else {
             return null;
         }

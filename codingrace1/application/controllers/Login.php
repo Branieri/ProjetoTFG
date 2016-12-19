@@ -17,27 +17,23 @@ class Login extends CI_Controller
         $this->load->model('usuarios_model');
         $ra = $this->input->post('ra');
         $senha = $this->input->post('senha');
+        $data['ra'] = $ra;
+        $this->session->set_userdata($data);
         $query = $this->usuarios_model->Login($ra, $senha);
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('login_view');
         } else {
-            foreach ($query as $row) :
-                $nome = $row['Nome'];
-                $tipo_usuario = $row['Tipo_Usuario'];
-            endforeach;
             if ($query) {
-                $data = array(
-                    'nome' => $nome,
-                    'tipo_usuario' => $tipo_usuario,
-                    'logged' => true
-                );
-                $this->session->set_userdata($data);
-                if($tipo_usuario == 0) {
+                $this->session->set_userdata('logged', true);
+                foreach ($query as $item) {
+                    $tipo_usuario = $item['Tipo_Usuario'];
+                }
+                if ($tipo_usuario == 0) {
                     redirect('home_admin');
-                }elseif ($tipo_usuario == 1){
+                } elseif ($tipo_usuario == 1) {
                     redirect('home_professor');
-                }else{
+                } else {
                     redirect('home_aluno');
                 }
             } else {
@@ -45,7 +41,6 @@ class Login extends CI_Controller
                 redirect('Login');
             }
         }
-
     }
 
     public function logout()

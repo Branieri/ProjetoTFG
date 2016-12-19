@@ -89,16 +89,17 @@ $route['home_professor'] = 'Professor/HomeProfessor';
 /** Rotas Usuários */
 $route['usuarios_professor'] = 'Professor/Usuarios';
 $route['editarusuario_professor/(:num)'] = 'Professor/EditaUsuario/$1';
-$route['excluirusuario_professor/(:num)'] = 'Professor/ExcluiUsuario/$1';
-$route['salvarusuario_professor'] = 'Professor/CadUsuario';
-$route['atualizarusuario_professor'] = 'Professor/AtualizaUsuario';
 
 /** Rotas Cursos */
 $route['cursos_professor'] = 'Professor/Cursos';
 $route['editarcurso_professor/(:num)'] = 'Professor/EditaCurso/$1';
-$route['excluircurso_professor/(:num)'] = 'Professor/ExcluiCurso/$1';
-$route['salvarcurso_professor'] = 'Professor/CadCurso';
 $route['atualizarcurso_professor'] = 'Professor/AtualizaCurso';
+
+/** Rotas para cursos de usuario */
+$route['cursoscadastrados_professor'] = 'Professor/CursosUsuario';
+$route['cadastracursos_professor/(:num)'] = 'Professor/CadCursoUsuario/$1';
+$route['excluircursousuario_professor/(:num)'] = 'Professor/ExcluiCursoUsuario/$1';
+
 
 /** Rotas Tópicos */
 $route['topicos_professor'] = 'Professor/Topicos';
@@ -106,6 +107,20 @@ $route['editartopico_professor/(:num)'] = 'Professor/EditaTopico/$1';
 $route['excluirtopico_professor/(:num)'] = 'Professor/ExcluiTopico/$1';
 $route['salvartopico_professor'] = 'Professor/CadTopico';
 $route['atualizartopico_professor'] = 'Professor/AtualizaTopico';
+
+/** Rotas para Alunos */
+
+/** Rotas Home */
+$route['home_aluno'] = 'Aluno/HomeAluno';
+
+/** Rotas Cursos */
+$route['cursos_aluno'] = 'Aluno/Cursos';
+
+/** Rotas para cursos de usuario */
+$route['cursoscadastrados_aluno'] = 'Aluno/CursosUsuario';
+$route['cadastracursos_aluno/(:num)'] = 'Aluno/CadCursoUsuario/$1';
+$route['excluircursousuario_aluno/(:num)'] = 'Aluno/ExcluiCursoUsuario/$1';
+
 
 /** Rota Logout */
 $route['logout'] = 'Login/logout';
