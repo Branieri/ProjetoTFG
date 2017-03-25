@@ -50,10 +50,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-//$route['default_controller'] = 'Admin/HomeAdmin';
 $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+/** Rota Novo Usuário */
+
+$route['new_user'] = 'Login/NovoUsuario';
 
 /** Rotas para Admin */
 
@@ -106,7 +109,13 @@ $route['topicos_professor'] = 'Professor/Topicos';
 $route['editartopico_professor/(:num)'] = 'Professor/EditaTopico/$1';
 $route['excluirtopico_professor/(:num)'] = 'Professor/ExcluiTopico/$1';
 $route['salvartopico_professor'] = 'Professor/CadTopico';
+$route['adicionartopicocurso_professor/(:num)/(:num)'] = 'Professor/CadTopicoCurso/$1/$2';
+$route['excluirtopicocurso_professor/(:num)/(:num)'] = 'Professor/ExcluiTopicoCurso/$1/$2';
 $route['atualizartopico_professor'] = 'Professor/AtualizaTopico';
+
+/** Rotas para Exercícios */
+$route['salvarexercicio_professor/(:num)'] = 'Professor/CadExercicio/$1';
+$route['excluirexercicio_professor/(:num)/(:num)'] = 'Professor/ExcluiExercicioTopico/$1/$2';
 
 /** Rotas para Alunos */
 

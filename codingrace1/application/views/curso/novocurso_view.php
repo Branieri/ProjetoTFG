@@ -34,14 +34,14 @@
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-calendar"></i></div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" name="ano" id="ano" type="text" placeholder="Ano" >
+                    <input class="w3-input w3-border" name="ano" id="ano" type="number" placeholder="Ano" >
                 </div>
             </div>
 
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-calendar-o"></i></div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" name="periodo" id="periodo" type="text" placeholder="Período" >
+                    <input class="w3-input w3-border" name="periodo" id="periodo" type="number" placeholder="Período" >
                 </div>
             </div>
 

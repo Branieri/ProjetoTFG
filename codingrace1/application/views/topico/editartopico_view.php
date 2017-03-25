@@ -20,7 +20,7 @@
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-code"></i></div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" name="id" id="id" type="text" placeholder="idTopico" value="<?php echo $topico['idTopico']?>">
+                    <input readonly class="w3-input w3-border" name="id" id="id" type="text" placeholder="idTopico" value="<?php echo $topico['idTopico']?>">
                 </div>
             </div>
 
@@ -41,3 +41,34 @@
             </p>
         </form>
     </div>
+
+        <div class="w3-container">
+            <table class="w3-table-all">
+                <h2 class="w3-left">Exercícios</h2>
+                <thead>
+                    <tr class="w3-light-grey">
+                        <th>Pergunta</th>
+                        <th>Categoria de Bloom</th>
+                        <th>Tipo de Exercício</th>
+                        <th>Operações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($exercicios == FALSE): ?>
+                        <tr><td colspan="2">Nenhum exercício encontrado</td></tr>
+                    <?php else: ?>
+                        <?php if (isset($exercicios)): ?>
+                            <?php foreach ($exercicios as $row): ?>
+                                <tr>
+                                    <td><?=$row['Pergunta']?></td>
+                                    <td><?=$row['Categoria_Bloom']?></td>
+                                    <td><?=$row['Tipo_Exercicio']?></td>
+                                    <td><a href="<?=base_url('editarexercicio_professor')."/".$row['idExercicio']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirexercicio_professor')."/".$topico['idTopico']."/".$row['idExercicio']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                </tr>
+                            <?php endforeach;?>
+                        <?php endif;?>
+                    <?php endif;?>
+                </tbody>
+            </table>
+            <button onclick="location.href='<?php echo base_url('salvarexercicio_professor')."/".$topico['idTopico'];?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+        </div>

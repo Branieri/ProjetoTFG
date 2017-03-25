@@ -23,7 +23,8 @@
                     <label class="w3-label w3-validate">Senha</label></p>
                 <p>
                     <button class="w3-btn w3-section w3-teal w3-ripple" type="submit" value="entrar"> Entrar </button></p>
-
+                <p>
+                    <a  href="<?=base_url('new_user')?>" style="color: blue">Novo Usuário</a>
             </form>
 
         </div>

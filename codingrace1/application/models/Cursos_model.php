@@ -45,6 +45,7 @@ class Cursos_model extends MY_Model
             return false;
 
         $pins = array();
+
         foreach ($pin as $dados) {
             $pins[] = $dados['Curso_PIN'];
         }

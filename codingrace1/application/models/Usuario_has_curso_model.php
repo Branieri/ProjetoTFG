@@ -55,6 +55,20 @@ class Usuario_has_curso_model extends MY_Model
         }
     }
 
+    public function UsuariosCurso($pin)
+    {
+        if(is_null($pin))
+            return false;
+        $this->db->select('Usuario_RA');
+        $this->db->where('Curso_PIN', $pin);
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return null;
+        }
+    }
+
     public function ExcluirCursoCadastrado($pin, $ra){
         if(is_null($pin))
             return false;

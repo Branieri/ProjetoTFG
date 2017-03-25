@@ -1,14 +1,19 @@
 <body class="w3-light-grey">
 
-    <?php $this->load->view('commons/menulateral')?>
+    <?php if ($this->router->fetch_class() == 'Admin'): ?>
+        <?php $this->load->view('commons/menulateral')?>
+    <?php endif; ?>
 
     <!-- !PAGE CONTENT! -->
-    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+    <?php if ($this->router->fetch_class() == 'Admin'): ?>
+        <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    <?php endif; ?>
 
     <?php $this->load->view('commons/menupagina')?>
 
-        <div class="w3-container w3-center">
-            <div class="w3-container w3-left">
+        <div class="<?($this->router->fetch_class() == 'Login') ? 'w3-container w3-left' : 'w3-container w3-center'; ?>">
+            <div class="w3-container w3-center">
                 <?php if ($this->session->flashdata('error') == TRUE): ?>
                     <p><?php echo $this->session->flashdata('error'); ?></p>
                 <?php endif; ?>
@@ -52,9 +57,13 @@
                     </div>
                 </div>
 
-                <p class="w3-center">
+                <p class="w3-left">
                     <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Salvar </button>
-                    <button onclick="location.href='<?php echo base_url('usuarios_admin');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
+                    <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                        <button onclick="location.href='<?php echo base_url('usuarios_admin');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
+                    <?php else: ?>
+                        <button onclick="location.href='<?php echo base_url('Login');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
+                    <?php endif; ?>
                 </p>
             </form>
 

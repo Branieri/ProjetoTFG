@@ -28,6 +28,25 @@ class Usuarios_model extends MY_Model
         $this->db->where('RA', $ra);
         $query = $this->db->get($this->table);
         if ($query->num_rows() > 0) {
+            return $query->row_array();
+        } else {
+            return null;
+        }
+    }
+
+    function GetBySomeRa($ra){
+        if(is_null($ra))
+            return false;
+
+        $ras = array();
+
+        foreach ($ra as $dados) {
+            $ras[] = $dados['Usuario_RA'];
+        }
+
+        $this->db->where_in('RA', $ras);
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0) {
             return $query->result_array();
         } else {
             return null;

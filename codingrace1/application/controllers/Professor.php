@@ -20,8 +20,10 @@ class Professor extends MY_Controller
     public function HomeProfessor()
     {
         $data['nome'] = $this->session->userdata('nome');
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+        $data['ra'] = $this->session->userdata('ra');
         $data['title'] = "Projeto TFG - Home";
+        $data['header'] = "Home";
+
         $this->load->view('commons/header',$data);
         $this->load->view('homeprofessor_view');
         $this->load->view('commons/footer');
@@ -36,8 +38,9 @@ class Professor extends MY_Controller
 
         /** Variável com dados para serem passadas para a view */
         $data['nome'] = $this->session->userdata('nome');
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+        $data['ra'] = $this->session->userdata('ra');
         $data['title'] = "Projeto TFG - Usuários";
+        $data['header'] = "Usuários";
 
         // Retorna todos os usuários do BD
         $data['usuarios'] = $this->usuarios_model->GetAll('Nome');
@@ -57,8 +60,9 @@ class Professor extends MY_Controller
 
         /** Variável com dados para serem passadas para a view */
         $data['nome'] = $this->session->userdata('nome');
+        $data['ra'] = $this->session->userdata('ra');
         $data['title'] = "Projeto TFG - Cursos";
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+        $data['header'] = "Discuplinas";
 
         // Retorna todos os cursos do BD
         $data['cursos'] = $this->cursos_model->GetAll('PIN');
@@ -101,15 +105,28 @@ class Professor extends MY_Controller
 
     public function EditaCurso($pin){
         $this->load->model('cursos_model');
+        $this->load->model('usuario_has_curso_model');
+        $this->load->model('usuarios_model');
+        $this->load->model('curso_has_topico_model');
+        $this->load->model('topicos_model');
 
         if(is_null($pin))
             redirect('cursoscadastrados_professor');
 
         $data['curso'] = $this->cursos_model->GetByPIN($pin);
 
+        $ra = $this->usuario_has_curso_model->UsuariosCurso($pin);
+        $data['usuarios'] = $this->usuarios_model->GetBySomeRa($ra);
+
+        $idTopico = $this->curso_has_topico_model->TopicosCursos($pin);
+        $data['topicos'] = $this->topicos_model->GetBySomeId($idTopico);
+
+        $data['topicostotal'] = $this->topicos_model->GetAll('idTopico');
+
         $data['nome'] = $this->session->userdata('nome');
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+        $data['ra'] = $this->session->userdata('ra');
         $data['title'] = "Projeto TFG - Edita Curso";
+        $data['header'] = "Editar Disciplina";
 
         /** Carrega a view */
         $this->load->view('commons/header',$data);
@@ -125,8 +142,9 @@ class Professor extends MY_Controller
 
         $ra = $this->session->userdata('ra');
         $data['nome'] = $this->session->userdata('nome');
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+        $data['ra'] = $this->session->userdata('ra');
         $data['title'] = "Projeto TFG - Minhas Disciplinas";
+        $data['header'] = "Minhas Disciplinas";
 
         $pin = $this->usuario_has_curso_model->CursosUsuario($ra);
         $data['cursos'] = $this->cursos_model->GetBySomePIN($pin);
@@ -186,8 +204,9 @@ class Professor extends MY_Controller
 
         /** Variável com dados para serem passadas para a view */
         $data['nome'] = $this->session->userdata('nome');
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+        $data['ra'] = $this->session->userdata('ra');
         $data['title'] = "Projeto TFG - Tópicos";
+        $data['header'] = "Tópicos";
 
         // Retorna todos os usuários do BD
         $data['topicos'] = $this->topicos_model->GetAll('idTopico');
@@ -203,6 +222,11 @@ class Professor extends MY_Controller
         $this->load->model('topicos_model');
         $validacao = self::Validar('novo_topico');
 
+        $data['nome'] = $this->session->userdata('nome');
+        $data['ra'] = $this->session->userdata('ra');
+        $data['title'] = "Projeto TFG - Novo Tópico";
+        $data['header'] = "Novo Tópico";
+
         if ($validacao){
             $nome = $this->input->post('nome');
             $dados_topico = array(
@@ -212,9 +236,6 @@ class Professor extends MY_Controller
             if(!$status)
             {
                 $this->session->set_flashdata('error', 'Não foi possível inserir o tópico!');
-                $data['nome'] = $this->session->userdata('nome');
-                $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
-                $data['title'] = "Projeto TFG - Novo Tópico";
 
                 /** Carrega a view */
                 $this->load->view('commons/header',$data);
@@ -224,15 +245,40 @@ class Professor extends MY_Controller
                 $this->session->set_flashdata('success', 'Tópico inserido com sucesso!');
                 redirect('topicos_admin');
             }
-        }
-        $data['nome'] = $this->session->userdata('nome');
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
-        $data['title'] = "Projeto TFG - Novo Tópico";
+        }else{
 
-        /** Carrega a view */
-        $this->load->view('commons/header',$data);
-        $this->load->view('topico/novotopico_view');
-        $this->load->view('commons/footer');
+            /** Carrega a view */
+            $this->load->view('commons/header',$data);
+            $this->load->view('topico/novotopico_view');
+            $this->load->view('commons/footer');
+        }
+
+    }
+
+    public function CadTopicoCurso($idTopico, $pin){
+        $this->load->model('curso_has_topico_model');
+
+        $dados_topico_cadastrado = array(
+            'Topico_idTopico' => $idTopico,
+            'Curso_PIN' => $pin,
+        );
+
+        $validacurso = $this->curso_has_topico_model->BuscaTopicoCadastrado($idTopico, $pin);
+
+        if ($validacurso){
+            $status = $this->curso_has_topico_model->Inserir($dados_topico_cadastrado);
+            if(!$status)
+            {
+                $this->session->set_flashdata('error', 'Não foi possível cadastrar o tópico!');
+                $this->EditaCurso($pin);
+            }else{
+                $this->session->set_flashdata('success', 'Tópico cadastrado com sucesso!');
+                $this->EditaCurso($pin);
+            }
+        }else{
+            $this->session->set_flashdata('error', 'Tópico já cadastrado para esse Curso!');
+            $this->EditaCurso($pin);
+        }
     }
 
     public function AtualizaTopico()
@@ -263,25 +309,133 @@ class Professor extends MY_Controller
 
     }
 
-    public function EditaTopico($id)
+    public function EditaTopico($idTopico)
     {
-
         $this->load->model('topicos_model');
+        $this->load->model('exercicio_model');
 
-        if(is_null($id))
-            redirect('topicos_admin');
+        if(is_null($idTopico))
+            redirect('topicos_professor');
 
-        $data['topico'] = $this->topicos_model->GetById($id);
+        $data['topico'] = $this->topicos_model->GetById($idTopico);
+        $data['exercicios'] = $this->exercicio_model->GetByTopico($idTopico);
 
         $data['nome'] = $this->session->userdata('nome');
-        $data['quantidade_cursos'] = $this->session->userdata('quantidadecursos');
+        $data['ra'] = $this->session->userdata('ra');
         $data['title'] = "Projeto TFG - Edita Tópico";
+        $data['header'] = "Edita Tópico";
 
         /** Carrega a view */
         $this->load->view('commons/header',$data);
         $this->load->view('topico/editartopico_view');
         $this->load->view('commons/footer');
 
+    }
+
+    public function ExcluiTopicoCurso($id, $pin){
+        $this->load->model('curso_has_topico_model');
+        $ra = $this->session->userdata('ra');
+
+        if(is_null($pin)) {
+            $this->session->set_flashdata('error', 'Não foi possível excluir o tópico.');
+            $this->EditaCurso($pin);
+        }else{
+            $data[''] = $this->curso_has_topico_model->ExcluirTopicosCadastrado($pin, $id);
+            $this->session->set_flashdata('success', 'Tópico excluído com sucesso.');
+            $this->EditaCurso($pin);
+        }
+    }
+
+    /** Função CRUD para exercícios */
+
+    public function CadExercicio($idTopico){
+        $this->load->model('exercicio_model');
+        $this->load->model('qme_model');
+        $validacao = self::Validar('novo_exercicio');
+
+        $data['nome'] = $this->session->userdata('nome');
+        $data['topico'] = $idTopico;
+        $data['ra'] = $this->session->userdata('ra');
+        $data['title'] = "Projeto TFG - Novo Exercício";
+        $data['header'] = "Novo Exercício";
+
+        if ($validacao){
+            $exercicio = $this->input->post('exercicio');
+            $bloom = $this->input->post('bloom');
+            $tipo_exercicio = $this->input->post('tipo_exercicio');
+            $opcaoa = $this->input->post('opcaoa');
+            $opcaob = $this->input->post('opcaob');
+            $opcaoc = $this->input->post('opcaoc');
+            $opcaod = $this->input->post('opcaod');
+            $opcaoe = $this->input->post('opcaoe');
+            $resposta_certa = $this->input->post('opcao_correta');
+            $dados_exercicio = array(
+                'Pergunta' => $exercicio,
+                'Categoria_Bloom' => $bloom,
+                'Tipo_Exercicio' => $tipo_exercicio,
+                'Topico_idTopico' => $idTopico
+            );
+
+            $idExercicio = $this->exercicio_model->InserirRetornandoId($dados_exercicio);
+
+            if(!$idExercicio)
+            {
+                $this->session->set_flashdata('error', 'Não foi possível cadastrar o Exercício!');
+
+                /** Carrega a view */
+                $this->load->view('commons/header',$data);
+                $this->load->view('exercicio/novoexercicio_view');
+                $this->load->view('commons/footer');
+            }else{
+                $dados_resposta = array(
+                    'itemA' => $opcaoa,
+                    'itemB' => $opcaob,
+                    'itemC' => $opcaoc,
+                    'itemD' => $opcaod,
+                    'itemE' => $opcaoe,
+                    'Alternativa' => $resposta_certa,
+                    'Exercicio_idExercicio' => $idExercicio
+                );
+                $okResposta = $this->qme_model->Inserir($dados_resposta);
+                if (!$okResposta){
+                    $this->exercicio_model->Excluir($idExercicio);
+
+                    $this->session->set_flashdata('error', 'Não foi possível cadastrar o exercício, problema nas Respostas!');
+
+                    /** Carrega a view */
+                    $this->load->view('commons/header',$data);
+                    $this->load->view('exercicio/novoexercicio_view');
+                    $this->load->view('commons/footer');
+                }else{
+                    $this->session->set_flashdata('success', 'Exercicio cadastrado com sucesso!');
+                    $this->EditaTopico($idTopico);
+                }
+            }
+        }else {
+            $data['nome'] = $this->session->userdata('nome');
+            $data['title'] = "Projeto TFG - Novo Exercício";
+            $data['topico'] = $idTopico;
+            $data['header'] = "Novo Exercício";
+
+            /** Carrega a view */
+            $this->load->view('commons/header', $data);
+            $this->load->view('exercicio/novoexercicio_view');
+            $this->load->view('commons/footer');
+        }
+    }
+
+    public function ExcluiExercicioTopico($idTopico, $idExercicio){
+        $this->load->model('exercicio_model');
+        $ra = $this->session->userdata('ra');
+
+        if(is_null($idExercicio)) {
+            $this->session->set_flashdata('error', 'Não foi possível excluir o exercício.');
+            $this->EditaTopico($idTopico);
+        }else{
+            $data[''] = $this->exercicio_model->ExcluirExercicio($idTopico, $idExercicio);
+            $this->session->set_flashdata('success', 'Exercício excluído com sucesso.');
+            $this->EditaTopico($idTopico);
+        }
     }
 
     public function Validar($operacao)
@@ -316,6 +470,12 @@ class Professor extends MY_Controller
             $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         }elseif ($operacao == 'editar_topico'){
             $this->form_validation->set_rules('nome', 'Nome', 'required');
+            $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+        }
+        elseif ($operacao == 'novo_exercicio'){
+            $this->form_validation->set_rules('exercicio', 'Pergunta', 'required');
+            $this->form_validation->set_rules('bloom', 'Categoria de Bloom', 'required');
+            $this->form_validation->set_rules('tipo_exercicio', 'Tipo de Exercício', 'required');
             $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         }
 
