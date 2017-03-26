@@ -82,7 +82,13 @@ $route['topicos_admin'] = 'Admin/Topicos';
 $route['editartopico_admin/(:num)'] = 'Admin/EditaTopico/$1';
 $route['excluirtopico_admin/(:num)'] = 'Admin/ExcluiTopico/$1';
 $route['salvartopico_admin'] = 'Admin/CadTopico';
+$route['adicionartopicocurso_admin/(:num)/(:num)'] = 'Admin/CadTopicoCurso/$1/$2';
+$route['excluirtopicocurso_admin/(:num)/(:num)'] = 'Admin/ExcluiTopicoCurso/$1/$2';
 $route['atualizartopico_admin'] = 'Admin/AtualizaTopico';
+
+/** Rotas para Exercícios */
+$route['salvarexercicio_admin/(:num)'] = 'Admin/CadExercicio/$1';
+$route['excluirexercicio_admin/(:num)/(:num)'] = 'Admin/ExcluiExercicioTopico/$1/$2';
 
 /** Rotas para Professores */
 

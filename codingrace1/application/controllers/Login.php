@@ -17,13 +17,14 @@ class Login extends CI_Controller
             $ra = $this->input->post('ra');
             $senha = $this->input->post('senha');
             $data['ra'] = $ra;
-            $this->session->set_userdata($data);
             $query = $this->usuarios_model->Login($ra, $senha);
             if ($query) {
-                $this->session->set_userdata('logged', true);
                 foreach ($query as $item) {
                     $tipo_usuario = $item['Tipo_Usuario'];
                 }
+                $data['logged'] = true;
+                $data['tipo_usuario'] = $tipo_usuario;
+                $this->session->set_userdata($data);
                 if ($tipo_usuario == 0) {
                     redirect('home_admin');
                 } elseif ($tipo_usuario == 1) {

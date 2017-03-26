@@ -9,8 +9,14 @@
     <div class="w3-container w3-row w3-center">
         <div class="w3-col s8">
             <span>Welcome, <strong><?php echo $nome?></strong></span><br>
-            <a href="<?=base_url('editarusuario_admin')."/".$ra ?>" class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i class="fa fa-user"></i></a>
-            <a href="#" class="w3-hover-none w3-hover-text-blue w3-show-inline-block"><i class="fa fa-cog"></i></a>
+            <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                <a href="<?=base_url('editarusuario_admin')."/".$ra?>" class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i class="fa fa-user"></i></a>
+            <?php elseif ($this->router->fetch_class() == 'Professor'): ?>
+                <a href="<?=base_url('editarusuario_professor')."/".$ra?>" class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i class="fa fa-user"></i></a>
+            <?php else: ?>
+                <a href="<?=base_url('editarusuario_aluno')."/".$ra?>" class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i class="fa fa-user"></i></a>
+            <?php endif; ?>
+            <!--<a href="#" class="w3-hover-none w3-hover-text-blue w3-show-inline-block"><i class="fa fa-cog"></i></a>-->
         </div>
     </div>
     <hr>

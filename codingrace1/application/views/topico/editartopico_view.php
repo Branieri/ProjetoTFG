@@ -63,12 +63,27 @@
                                     <td><?=$row['Pergunta']?></td>
                                     <td><?=$row['Categoria_Bloom']?></td>
                                     <td><?=$row['Tipo_Exercicio']?></td>
-                                    <td><a href="<?=base_url('editarexercicio_professor')."/".$row['idExercicio']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirexercicio_professor')."/".$topico['idTopico']."/".$row['idExercicio']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
-                                </tr>
+                                    <?php if ($this->router->fetch_class() == 'Professor'): ?>
+                                        <td><a href="<?=base_url('editarexercicio_professor')."/".$row['idExercicio']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirexercicio_professor')."/".$topico['idTopico']."/".$row['idExercicio']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                    <?php else: ?>
+                                        <td><a href="<?=base_url('editarexercicio_admin')."/".$row['idExercicio']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirexercicio_admin')."/".$topico['idTopico']."/".$row['idExercicio']?>"><i class="w3-xlarge fa fa-trash"></i></a></td
+                                    <?php endif; ?>
+                                    </tr>
                             <?php endforeach;?>
                         <?php endif;?>
                     <?php endif;?>
                 </tbody>
             </table>
-            <button onclick="location.href='<?php echo base_url('salvarexercicio_professor')."/".$topico['idTopico'];?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+            <?php if ($this->router->fetch_class() == 'Professor'): ?>
+                <button onclick="location.href='<?php echo base_url('salvarexercicio_professor')."/".$topico['idTopico'];?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+            <?php else: ?>
+                <button onclick="location.href='<?php echo base_url('salvarexercicio_admin')."/".$topico['idTopico'];?>'" class="w3-btn w3-black w3-xlarge"><i class="w3-xlarge fa fa-plus-square"></i></button>
+            <?php endif; ?>
         </div>
+
+        <?php if ($this->session->flashdata('error') == TRUE): ?>
+            <p><?php echo $this->session->flashdata('error'); ?></p>
+        <?php endif; ?>
+            <?php if ($this->session->flashdata('success') == TRUE): ?>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
+        <?php endif; ?>

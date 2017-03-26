@@ -102,8 +102,10 @@
                                 <td><?=$row['Nome']?></td>
                                 <?php if ($this->router->fetch_class() == 'Professor'): ?>
                                     <td><a href="<?=base_url('editartopico_professor')."/".$row['idTopico']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirtopicocurso_professor')."/".$row['idTopico']."/".$curso['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                <?php else: ?>
+                                    <td><a href="<?=base_url('editartopico_admin')."/".$row['idTopico']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirtopicocurso_admin')."/".$row['idTopico']."/".$curso['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
                                 <?php endif; ?>
-                            </tr>
+                                </tr>
                         <?php endforeach;?>
                     <?php endif;?>
                     </tbody>
@@ -118,9 +120,13 @@
                         <?php endforeach;?>
                     </select>
                 <?php endif;?>
-                <td><a href="<?=base_url('adicionartopicocurso_professor')."/numero_topico/".$curso['PIN']?>"  id="topico" style="text-decoration: none"><i class="w3-xlarge fa fa-plus-square">&nbsp;</i></a></td>
+                <?php if ($this->router->fetch_class() == 'Professor'): ?>
+                    <td><a href="<?=base_url('adicionartopicocurso_professor')."/numero_topico/".$curso['PIN']?>"  id="topico" style="text-decoration: none"><i class="w3-xlarge fa fa-plus-square">&nbsp;</i></a></td>
+                <?php else: ?>
+                    <td><a href="<?=base_url('adicionartopicocurso_admin')."/numero_topico/".$curso['PIN']?>"  id="topico" style="text-decoration: none"><i class="w3-xlarge fa fa-plus-square">&nbsp;</i></a></td>
+                <?php endif; ?>
 
-                 <script language="JavaScript" type="text/javascript">
+                <script language="JavaScript" type="text/javascript">
                      function numero_topico(numero) {
                         var $opcao = document.getElementById("topico");
                         $opcao.href = $opcao.href.replace('numero_topico', numero.value);

@@ -45,11 +45,10 @@ class Exercicio_model extends MY_Model
         return $this->db->update($this->table, $data);
     }
 
-    function ExcluirExercicio($idTopico, $idExercicio) {
-        if(is_null($idTopico))
+    function ExcluirExercicio($idExercicio) {
+        if(is_null($idExercicio))
             return false;
         $this->db->where('idExercicio', $idExercicio);
-        $this->db->where('Topico_idTopico', $idTopico);
         return $this->db->delete($this->table);
     }
 

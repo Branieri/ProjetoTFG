@@ -51,6 +51,33 @@ class Professor extends MY_Controller
         $this->load->view('commons/footer');
     }
 
+    public function EditaUsuario($ra)
+    {
+        if($ra == $this->session->userdata('ra')){
+            $this->load->model('usuarios_model');
+
+            if(is_null($ra))
+                redirect('usuarios_admin');
+
+            $data['usuario'] = $this->usuarios_model->GetByRA($ra);
+
+            $data['nome'] = $this->session->userdata('nome');
+            $data['ra'] = $this->session->userdata('ra');
+            $data['title'] = "Projeto TFG - Edita Usuário";
+            $data['header'] = "Edita Usuário";
+
+            /** Carrega a view */
+            $this->load->view('commons/header',$data);
+            $this->load->view('usuario/editarusuario_view');
+            $this->load->view('commons/footer');
+
+        }else{
+            echo 'Você não tem permissão para editar outro usuário';
+            die();
+        }
+
+    }
+
 
     /** Funções CRUD para Cursos */
 
@@ -426,15 +453,27 @@ class Professor extends MY_Controller
 
     public function ExcluiExercicioTopico($idTopico, $idExercicio){
         $this->load->model('exercicio_model');
+        $this->load->model('qme_model');
         $ra = $this->session->userdata('ra');
 
         if(is_null($idExercicio)) {
             $this->session->set_flashdata('error', 'Não foi possível excluir o exercício.');
             $this->EditaTopico($idTopico);
         }else{
-            $data[''] = $this->exercicio_model->ExcluirExercicio($idTopico, $idExercicio);
-            $this->session->set_flashdata('success', 'Exercício excluído com sucesso.');
-            $this->EditaTopico($idTopico);
+            $excluiQME = $this->qme_model->ExcluirQME($idExercicio);
+            if($excluiQME){
+                $excluiExercicio = $this->exercicio_model->ExcluirExercicio($idExercicio);
+                if ($excluiExercicio){
+                    $this->session->set_flashdata('success', 'Exercício excluído com sucesso.');
+                    $this->EditaTopico($idTopico);
+                }else{
+                    $this->session->set_flashdata('error', 'Não foi possível excluir o exercício.');
+                    $this->EditaTopico($idTopico);
+                }
+            }else{
+                $this->session->set_flashdata('error', 'Não foi possível excluir o exercício.');
+                $this->EditaTopico($idTopico);
+            }
         }
     }
 

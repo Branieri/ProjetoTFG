@@ -13,4 +13,11 @@ class QME_model extends MY_Model
         parent::__construct();
         $this->table = 'QME';
     }
+
+    function ExcluirQME($idExercicio) {
+        if(is_null($idExercicio))
+            return false;
+        $this->db->where('Exercicio_idExercicio', $idExercicio);
+        return $this->db->delete($this->table);
+    }
 }

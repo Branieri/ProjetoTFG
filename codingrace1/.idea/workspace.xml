@@ -2,31 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c401bd0-6e14-403a-a706-45db4ed40cb4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/Curso_has_topico_model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/Exercicio_model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/Qme_model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/exercicio/editaexercicio_view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/exercicio/novoexercicio_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ProjetoTFG.iml" afterPath="$PROJECT_DIR$/.idea/ProjetoTFG.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/routes.php" afterPath="$PROJECT_DIR$/application/config/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/Admin.php" afterPath="$PROJECT_DIR$/application/controllers/Admin.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/Login.php" afterPath="$PROJECT_DIR$/application/controllers/Login.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/Professor.php" afterPath="$PROJECT_DIR$/application/controllers/Professor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/MY_Controller.php" afterPath="$PROJECT_DIR$/application/core/MY_Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Cursos_model.php" afterPath="$PROJECT_DIR$/application/models/Cursos_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Topicos_model.php" afterPath="$PROJECT_DIR$/application/models/Topicos_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Usuario_has_curso_model.php" afterPath="$PROJECT_DIR$/application/models/Usuario_has_curso_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Usuarios_model.php" afterPath="$PROJECT_DIR$/application/models/Usuarios_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Exercicio_model.php" afterPath="$PROJECT_DIR$/application/models/Exercicio_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Qme_model.php" afterPath="$PROJECT_DIR$/application/models/Qme_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/commons/menulateral.php" afterPath="$PROJECT_DIR$/application/views/commons/menulateral.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/commons/menupagina.php" afterPath="$PROJECT_DIR$/application/views/commons/menupagina.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/curso/editarcurso_view.php" afterPath="$PROJECT_DIR$/application/views/curso/editarcurso_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/curso/novocurso_view.php" afterPath="$PROJECT_DIR$/application/views/curso/novocurso_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/homealuno_view.php" afterPath="$PROJECT_DIR$/application/views/homealuno_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/homeprofessor_view.php" afterPath="$PROJECT_DIR$/application/views/homeprofessor_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/login_view.php" afterPath="$PROJECT_DIR$/application/views/login_view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/exercicio/novoexercicio_view.php" afterPath="$PROJECT_DIR$/application/views/exercicio/novoexercicio_view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/topico/editartopico_view.php" afterPath="$PROJECT_DIR$/application/views/topico/editartopico_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/usuario/novousuario_view.php" afterPath="$PROJECT_DIR$/application/views/usuario/novousuario_view.php" />
     </list>
     <ignored path="ProjetoTFG.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,128 +42,7 @@
     <favorites_list name="ProjetoTFG" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Professor.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Professor.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-              <folding>
-                <element signature="n#__construct#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#HomeProfessor#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#Usuarios#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#Cursos#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#AtualizaCurso#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#CursosUsuario#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#CadCursoUsuario#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#ExcluiCursoUsuario#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#Topicos#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#CadTopico#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#CadTopicoCurso#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#AtualizaTopico#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#EditaTopico#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#ExcluiTopicoCurso#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#CadExercicio#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#ExcluiExercicioTopico#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#Validar#0;n#Professor#0;n#!!top" expanded="false" />
-                <element signature="n#teste#0;n#Professor#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Admin.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Admin.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="304" column="48" lean-forward="false" selection-start-line="304" selection-start-column="48" selection-end-line="304" selection-end-column="48" />
-              <folding>
-                <element signature="n#__construct#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#HomeAdmin#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#Usuarios#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#CadUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#AtualizaUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#EditaUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#ExcluiUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#Cursos#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#CadCurso#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#ExcluiCurso#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#AtualizaCurso#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#Topicos#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#CadTopico#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#AtualizaTopico#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#EditaTopico#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#ExcluiTopico#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#Validar#0;n#Admin#0;n#!!top" expanded="false" />
-                <element signature="n#teste#0;n#Admin#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editartopico_view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/topico/editartopico_view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="86" lean-forward="false" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Topicos_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/Topicos_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-              <folding>
-                <element signature="n#__construct#0;n#Topicos_model#0;n#!!top" expanded="false" />
-                <element signature="n#GetBySomeId#0;n#Topicos_model#0;n#!!top" expanded="false" />
-                <element signature="n#AtualizaTopico#0;n#Topicos_model#0;n#!!top" expanded="false" />
-                <element signature="n#ExcluirTopico#0;n#Topicos_model#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Usuarios_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/Usuarios_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="30" column="30" lean-forward="false" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-              <folding>
-                <element signature="n#Login#0;n#Usuarios_model#0;n#!!top" expanded="false" />
-                <element signature="n#GetBySomeRa#0;n#Usuarios_model#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MY_Controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/core/MY_Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="48" column="34" lean-forward="false" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
-              <folding>
-                <element signature="n#logout#0;n#Login#0;n#!!top" expanded="false" />
-                <element signature="n#NovoUsuario#0;n#Login#0;n#!!top" expanded="false" />
-                <element signature="n#Validar#0;n#Login#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -193,7 +57,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/cadusuario.php" />
         <option value="$PROJECT_DIR$/application/views/home_admin.php" />
         <option value="$PROJECT_DIR$/application/config/database.php" />
         <option value="$PROJECT_DIR$/assets/css/form_Login.css" />
@@ -228,22 +91,23 @@
         <option value="$PROJECT_DIR$/application/models/Topicos_model.php" />
         <option value="$PROJECT_DIR$/application/models/Curso_has_topico_model.php" />
         <option value="$PROJECT_DIR$/application/views/curso/novocurso_view.php" />
-        <option value="$PROJECT_DIR$/application/views/topico/editartopico_view.php" />
-        <option value="$PROJECT_DIR$/application/views/curso/editarcurso_view.php" />
         <option value="$PROJECT_DIR$/application/models/Cursos_model.php" />
-        <option value="$PROJECT_DIR$/application/config/routes.php" />
         <option value="$PROJECT_DIR$/application/views/usuario/novousuario_view.php" />
         <option value="$PROJECT_DIR$/application/views/login_view.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Login.php" />
-        <option value="$PROJECT_DIR$/application/models/Exercicio_model.php" />
         <option value="$PROJECT_DIR$/application/models/QME_model.php" />
-        <option value="$PROJECT_DIR$/application/views/exercicio/novoexercicio_view.php" />
         <option value="$PROJECT_DIR$/application/views/commons/menupagina.php" />
-        <option value="$PROJECT_DIR$/application/views/commons/menulateral.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Professor.php" />
         <option value="$PROJECT_DIR$/application/models/Usuarios_model.php" />
         <option value="$PROJECT_DIR$/application/core/MY_Controller.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Login.php" />
+        <option value="$PROJECT_DIR$/application/views/curso/editarcurso_view.php" />
+        <option value="$PROJECT_DIR$/application/views/exercicio/novoexercicio_view.php" />
+        <option value="$PROJECT_DIR$/application/config/routes.php" />
+        <option value="$PROJECT_DIR$/application/models/Exercicio_model.php" />
+        <option value="$PROJECT_DIR$/application/models/Qme_model.php" />
+        <option value="$PROJECT_DIR$/application/views/topico/editartopico_view.php" />
         <option value="$PROJECT_DIR$/application/controllers/Admin.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Professor.php" />
+        <option value="$PROJECT_DIR$/application/views/commons/menulateral.php" />
       </list>
     </option>
   </component>
@@ -302,24 +166,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codingrace1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codingrace1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -448,11 +294,12 @@
       <workItem from="1489778775031" duration="598000" />
       <workItem from="1489940076543" duration="15561000" />
       <workItem from="1490455956066" duration="599000" />
+      <workItem from="1490541731567" duration="3707000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184184000" />
+    <option name="totallyTimeSpent" value="187891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -467,7 +314,7 @@
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2037037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2037037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904884" sideWeight="0.4920635" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29305914" sideWeight="0.50793654" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3398254" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -502,7 +349,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -623,13 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/exercicio/editaexercicio_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/curso/novocurso_view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47">
@@ -651,31 +491,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Cursos_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/curso/editarcurso_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="145" lean-forward="false" selection-start-line="22" selection-start-column="145" selection-end-line="22" selection-end-column="145" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/curso/cursos_view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="42" column="50" lean-forward="false" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/usuario/novousuario_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="64" column="75" lean-forward="true" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="75" />
         </state>
       </provider>
     </entry>
@@ -684,34 +503,6 @@
         <state relative-caret-position="390">
           <caret line="26" column="75" lean-forward="false" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/core/MY_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-704">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Qme_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Exercicio_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/exercicio/novoexercicio_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -727,102 +518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/commons/menulateral.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/usuario/editarusuario_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Professor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding>
-            <element signature="n#__construct#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#HomeProfessor#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#Usuarios#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#Cursos#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#AtualizaCurso#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#CursosUsuario#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#CadCursoUsuario#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#ExcluiCursoUsuario#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#Topicos#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#CadTopico#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#CadTopicoCurso#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#AtualizaTopico#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#EditaTopico#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#ExcluiTopicoCurso#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#CadExercicio#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#ExcluiExercicioTopico#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#Validar#0;n#Professor#0;n#!!top" expanded="false" />
-            <element signature="n#teste#0;n#Professor#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="304" column="48" lean-forward="false" selection-start-line="304" selection-start-column="48" selection-end-line="304" selection-end-column="48" />
-          <folding>
-            <element signature="n#__construct#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#HomeAdmin#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#Usuarios#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#CadUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#AtualizaUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#EditaUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#ExcluiUsuario#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#Cursos#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#CadCurso#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#ExcluiCurso#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#AtualizaCurso#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#Topicos#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#CadTopico#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#AtualizaTopico#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#EditaTopico#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#ExcluiTopico#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#Validar#0;n#Admin#0;n#!!top" expanded="false" />
-            <element signature="n#teste#0;n#Admin#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/topico/editartopico_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="86" lean-forward="false" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Topicos_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding>
-            <element signature="n#__construct#0;n#Topicos_model#0;n#!!top" expanded="false" />
-            <element signature="n#GetBySomeId#0;n#Topicos_model#0;n#!!top" expanded="false" />
-            <element signature="n#AtualizaTopico#0;n#Topicos_model#0;n#!!top" expanded="false" />
-            <element signature="n#ExcluirTopico#0;n#Topicos_model#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,12 +542,183 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="48" column="34" lean-forward="false" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+        <state relative-caret-position="543">
+          <caret line="45" column="54" lean-forward="true" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
           <folding>
-            <element signature="n#logout#0;n#Login#0;n#!!top" expanded="false" />
             <element signature="n#NovoUsuario#0;n#Login#0;n#!!top" expanded="false" />
             <element signature="n#Validar#0;n#Login#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/exercicio/editaexercicio_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/exercicio/novoexercicio_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="85" column="105" lean-forward="false" selection-start-line="85" selection-start-column="105" selection-end-line="85" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Topicos_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding>
+            <element signature="n#__construct#0;n#Topicos_model#0;n#!!top" expanded="false" />
+            <element signature="n#GetBySomeId#0;n#Topicos_model#0;n#!!top" expanded="false" />
+            <element signature="n#AtualizaTopico#0;n#Topicos_model#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluirTopico#0;n#Topicos_model#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Exercicio_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="47" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/core/MY_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-704">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="37" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="123" column="48" lean-forward="false" selection-start-line="123" selection-start-column="48" selection-end-line="123" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Cursos_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/usuario/novousuario_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="64" column="75" lean-forward="true" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/usuario/editarusuario_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Qme_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/curso/editarcurso_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="140" column="31" lean-forward="true" selection-start-line="135" selection-start-column="16" selection-end-line="140" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/commons/menulateral.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="73" lean-forward="true" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+          <folding>
+            <marker date="1490545346697" expanded="true" signature="1460:1493" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/topico/editartopico_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="86" column="27" lean-forward="true" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="132" column="41" lean-forward="false" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
+          <folding>
+            <element signature="n#__construct#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#HomeAdmin#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#Usuarios#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#CadUsuario#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#AtualizaUsuario#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#EditaUsuario#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiUsuario#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#Cursos#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#CadCurso#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiCurso#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#AtualizaCurso#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#EditaCurso#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#Topicos#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#CadTopico#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#CadTopicoCurso#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiTopicoCurso#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#AtualizaTopico#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#EditaTopico#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiTopico#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#CadExercicio#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiExercicioTopico#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#Validar#0;n#Admin#0;n#!!top" expanded="false" />
+            <element signature="n#teste#0;n#Admin#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Professor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+          <folding>
+            <element signature="n#__construct#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#HomeProfessor#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#Usuarios#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#EditaUsuario#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#Cursos#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#AtualizaCurso#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#EditaCurso#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#CursosUsuario#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#CadCursoUsuario#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiCursoUsuario#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#Topicos#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#CadTopico#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#CadTopicoCurso#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#AtualizaTopico#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#EditaTopico#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiTopicoCurso#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#CadExercicio#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#ExcluiExercicioTopico#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#Validar#0;n#Professor#0;n#!!top" expanded="false" />
+            <element signature="n#teste#0;n#Professor#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
