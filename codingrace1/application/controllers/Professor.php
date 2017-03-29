@@ -328,7 +328,7 @@ class Professor extends MY_Controller
                 self::EditaTopico($id);
             } else {
                 $this->session->set_flashdata('success', 'Tópico atualizado com sucesso.');
-                redirect('topicos_admin');
+                redirect('topicos_professor');
             }
         }else{
             self::EditaTopico($id);

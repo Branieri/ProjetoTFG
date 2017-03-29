@@ -70,6 +70,7 @@ class Login extends CI_Controller
                 $this->session->set_flashdata('error', 'Não foi possível inserir o usuário!');
                 $data['nome'] = $this->session->userdata('nome');
                 $data['title'] = "Projeto TFG - Novo Usuário";
+                $data['header'] = "Novo Usuário";
 
                 /** Carrega a view */
                 $this->load->view('commons/header',$data);
@@ -82,6 +83,7 @@ class Login extends CI_Controller
         }else{
             $data['nome'] = $this->session->userdata('nome');
             $data['title'] = "Projeto TFG - Novo Usuário";
+            $data['header'] = "Novo Usuário";
 
             /** Carrega a view */
             $this->load->view('commons/header',$data);
