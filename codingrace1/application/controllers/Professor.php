@@ -31,26 +31,6 @@ class Professor extends MY_Controller
 
     /** Funções CRUD para Usuários */
 
-    public function Usuarios()
-    {
-        /** Carrega funções de busca do BD */
-        $this->load->model('usuarios_model');
-
-        /** Variável com dados para serem passadas para a view */
-        $data['nome'] = $this->session->userdata('nome');
-        $data['ra'] = $this->session->userdata('ra');
-        $data['title'] = "Projeto TFG - Usuários";
-        $data['header'] = "Usuários";
-
-        // Retorna todos os usuários do BD
-        $data['usuarios'] = $this->usuarios_model->GetAll('Nome');
-
-        /** Carrega a view */
-        $this->load->view('commons/header',$data);
-        $this->load->view('usuario/usuarios_view');
-        $this->load->view('commons/footer');
-    }
-
     public function EditaUsuario($ra)
     {
         if($ra == $this->session->userdata('ra')){
@@ -78,27 +58,38 @@ class Professor extends MY_Controller
 
     }
 
+    public function AtualizaUsuario()
+    {
+        $this->load->model('usuarios_model');
+        $validacao = self::Validar('editar_usuario');
+        $ra = $this->input->post('ra');
+
+        if($validacao) {
+            $nome = $this->input->post('nome');
+            $email = $this->input->post('email');
+
+            $dados_usuario = array(
+                'Nome' => $nome,
+                'Email' => $email,
+            );
+
+            $status = $this->usuarios_model->AtualizaUsuario($ra, $dados_usuario);
+
+            if (!$status) {
+                $this->session->set_flashdata('error', 'Não foi possível atualizar o usuário.');
+                self::EditaUsuario($ra);
+            } else {
+                $this->session->set_flashdata('success', 'Usuário atualizado com sucesso.');
+                redirect('home_professor');
+            }
+        }else{
+            self::EditaUsuario($ra);
+        }
+
+    }
+
 
     /** Funções CRUD para Cursos */
-
-    public function Cursos(){
-        /** Carrega funções de busca do BD */
-        $this->load->model('cursos_model');
-
-        /** Variável com dados para serem passadas para a view */
-        $data['nome'] = $this->session->userdata('nome');
-        $data['ra'] = $this->session->userdata('ra');
-        $data['title'] = "Projeto TFG - Cursos";
-        $data['header'] = "Discuplinas";
-
-        // Retorna todos os cursos do BD
-        $data['cursos'] = $this->cursos_model->GetAll('PIN');
-
-        /** Carrega a view */
-        $this->load->view('commons/header',$data);
-        $this->load->view('curso/cursos_view');
-        $this->load->view('commons/footer');
-    }
 
     public function AtualizaCurso(){
         $this->load->model('cursos_model');
@@ -181,14 +172,18 @@ class Professor extends MY_Controller
         $this->load->view('commons/footer');
     }
 
-    public function CadCursoUsuario($pin){
+    public function CadCursoUsuario(){
         $this->load->model('usuario_has_curso_model');
         $ra = $this->session->userdata('ra');
+        $pin = $this->input->post('PIN');
 
         $dados_curso_cadastrado = array(
             'Usuario_RA' => $ra,
             'Curso_PIN' => $pin,
         );
+
+        if(is_null($pin))
+            redirect('cursoscadastrados_professor');
 
         $validacurso = $this->usuario_has_curso_model->BuscaCursoCadastrado($ra, $pin);
 
@@ -197,14 +192,14 @@ class Professor extends MY_Controller
             if(!$status)
             {
                 $this->session->set_flashdata('error', 'Não foi possível cadastrar o curso!');
-                redirect('cursos_professor');
+                redirect('cursoscadastrados_professor\'');
             }else{
                 $this->session->set_flashdata('success', 'Curso cadastrado com sucesso!');
                 redirect('cursoscadastrados_professor');
             }
         }else{
             $this->session->set_flashdata('error', 'Curso já cadastrado para esse Usuário!');
-            redirect('cursos_professor');
+            redirect('cursoscadastrados_professor\'');
         }
     }
 

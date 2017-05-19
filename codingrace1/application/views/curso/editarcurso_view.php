@@ -113,7 +113,7 @@
                 <?php if ($topicostotal == FALSE): ?>
                     <tr><td colspan="2">Nenhum tópico encontrado</td></tr>
                 <?php else: ?>
-                    <select name="Topicos" onchange="numero_topico(this)">
+                    Novo Tópico<select name="Topicos" onchange="numero_topico(this)">
                         <option>Selecione...</option>
                         <?php foreach ($topicostotal as $row2): ?>
                             <option value="<?=$row2['idTopico']?>"><?=$row2['Nome']?></option>

@@ -96,8 +96,8 @@ $route['excluirexercicio_admin/(:num)/(:num)'] = 'Admin/ExcluiExercicioTopico/$1
 $route['home_professor'] = 'Professor/HomeProfessor';
 
 /** Rotas Usuários */
-$route['usuarios_professor'] = 'Professor/Usuarios';
 $route['editarusuario_professor/(:num)'] = 'Professor/EditaUsuario/$1';
+$route['atualizarusuario_professor'] = 'Professor/AtualizaUsuario';
 
 /** Rotas Cursos */
 $route['cursos_professor'] = 'Professor/Cursos';
@@ -106,7 +106,7 @@ $route['atualizarcurso_professor'] = 'Professor/AtualizaCurso';
 
 /** Rotas para cursos de usuario */
 $route['cursoscadastrados_professor'] = 'Professor/CursosUsuario';
-$route['cadastracursos_professor/(:num)'] = 'Professor/CadCursoUsuario/$1';
+$route['cadastracursos_professor'] = 'Professor/CadCursoUsuario';
 $route['excluircursousuario_professor/(:num)'] = 'Professor/ExcluiCursoUsuario/$1';
 
 
@@ -125,15 +125,19 @@ $route['excluirexercicio_professor/(:num)/(:num)'] = 'Professor/ExcluiExercicioT
 
 /** Rotas para Alunos */
 
+/** Rotas para edição de usuários */
+$route['editarusuario_aluno/(:num)'] = 'Aluno/EditaUsuario/$1';
+$route['atualizarusuario_aluno'] = 'Aluno/AtualizaUsuario';
+
 /** Rotas Home */
 $route['home_aluno'] = 'Aluno/HomeAluno';
 
 /** Rotas Cursos */
-$route['cursos_aluno'] = 'Aluno/Cursos';
+$route['cursos_aluno'] = 'Aluno/CursosUsuario';
 
 /** Rotas para cursos de usuario */
 $route['cursoscadastrados_aluno'] = 'Aluno/CursosUsuario';
-$route['cadastracursos_aluno/(:num)'] = 'Aluno/CadCursoUsuario/$1';
+$route['cadastracursos_aluno'] = 'Aluno/CadCursoUsuario';
 $route['excluircursousuario_aluno/(:num)'] = 'Aluno/ExcluiCursoUsuario/$1';
 
 

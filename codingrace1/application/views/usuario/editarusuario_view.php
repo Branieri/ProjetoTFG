@@ -14,7 +14,13 @@
             <?php endif; ?>
         </div>
         <?php echo validation_errors();?>
+        <?php if ($this->router->fetch_class() == 'Admin'): ?>
         <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=base_url('atualizarusuario_admin')?>">
+        <?php elseif ($this->router->fetch_class() == 'Professor'): ?>
+        <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=base_url('atualizarusuario_professor')?>">
+        <?php else: ?>
+        <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=base_url('atualizarusuario_aluno')?>">
+        <?php endif; ?>
             <h2 class="w3-center">Editar Usuário</h2>
 
             <div class="w3-row w3-section">
