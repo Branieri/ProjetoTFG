@@ -13,7 +13,7 @@
     <?php $this->load->view('commons/menupagina')?>
 
         <div class="<?($this->router->fetch_class() == 'Login') ? 'w3-container w3-left' : 'w3-container w3-center'; ?>">
-            <div class="w3-container w3-center">
+            <div class="w3-container w3-content w3-center">
                 <?php if ($this->session->flashdata('error') == TRUE): ?>
                     <p><?php echo $this->session->flashdata('error'); ?></p>
                 <?php endif; ?>

@@ -41,7 +41,7 @@ class Login extends CI_Controller
         }
     }
 
-    public function logout()
+    public function Logout()
     {
         $this->session->set_userdata('logged', false);
         redirect($this->index());

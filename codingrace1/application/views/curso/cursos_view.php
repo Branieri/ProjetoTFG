@@ -9,7 +9,7 @@
 
 
 
-            <div class="w3-container">
+            <div class="w3-container ">
 
                 <?php if ($this->router->fetch_class() == 'Aluno' || $this->router->fetch_class() == 'Professor'): ?>
                     <div class="w3-container w3-left">

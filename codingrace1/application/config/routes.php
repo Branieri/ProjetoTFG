@@ -142,4 +142,4 @@ $route['excluircursousuario_aluno/(:num)'] = 'Aluno/ExcluiCursoUsuario/$1';
 
 
 /** Rota Logout */
-$route['logout'] = 'Login/logout';
+$route['logout'] = 'Login/Logout';
