@@ -134,6 +134,7 @@ $route['home_aluno'] = 'Aluno/HomeAluno';
 
 /** Rotas Cursos */
 $route['cursos_aluno'] = 'Aluno/CursosUsuario';
+$route['realizacurso_aluno/(:num)'] = 'Aluno/Topicos_Cursos/$1';
 
 /** Rotas para cursos de usuario */
 $route['cursoscadastrados_aluno'] = 'Aluno/CursosUsuario';

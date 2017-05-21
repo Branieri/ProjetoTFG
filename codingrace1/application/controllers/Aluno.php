@@ -150,6 +150,32 @@ class Aluno extends MY_Controller
         }
     }
 
+    public function Topicos_Cursos($pin){
+        $this->load->model('usuario_has_curso_model');
+        $this->load->model('usuarios_model');
+        $this->load->model('curso_has_topico_model');
+        $this->load->model('topicos_model');
+
+        if(is_null($pin))
+            redirect('cursoscadastrados_aluno');
+
+        $ra = $this->usuario_has_curso_model->UsuariosCurso($pin);
+        $data['usuarios'] = $this->usuarios_model->GetBySomeRa($ra);
+
+        $idTopico = $this->curso_has_topico_model->TopicosCursos($pin);
+        $data['topicos'] = $this->topicos_model->GetBySomeId($idTopico);
+
+        $data['nome'] = $this->session->userdata('nome');
+        $data['ra'] = $this->session->userdata('ra');
+        $data['title'] = "Projeto TFG - Discplina ";
+        $data['header'] = "Disciplina";
+
+        /** Carrega a view */
+        $this->load->view('commons/header',$data);
+        $this->load->view('cursos_alunos/cursoaluno_view');
+        $this->load->view('commons/footer');
+    }
+
     public function Validar($operacao)
     {
         if($operacao == 'novo_usuario') {

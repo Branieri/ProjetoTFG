@@ -19,53 +19,55 @@
                 <?php endif; ?>
             </div>
             <?php echo validation_errors();?>
-            <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data">
-                <h2 class="w3-center">Novo Usuário</h2>
+            <div class="w3-container w3-content">
+                <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data">
+                    <h2 class="w3-center">Novo Usuário</h2>
 
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" name="nome" id="nome" type="text" placeholder="Nome" >
+                    <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                        <div class="w3-rest">
+                            <input class="w3-input w3-border" name="nome" id="nome" type="text" placeholder="Nome" >
+                        </div>
                     </div>
-                </div>
 
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-book"></i></div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" name="ra" id="ra" type="text" placeholder="RA" >
+                    <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-book"></i></div>
+                        <div class="w3-rest">
+                            <input class="w3-input w3-border" name="ra" id="ra" type="text" placeholder="RA" >
+                        </div>
                     </div>
-                </div>
 
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" name="email" id="email" type="text" placeholder="Email" >
+                    <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                        <div class="w3-rest">
+                            <input class="w3-input w3-border" name="email" id="email" type="text" placeholder="Email" >
+                        </div>
                     </div>
-                </div>
 
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" name="confirmar_email" id="confirmar_email" type="text" placeholder="Confirmar Email" >
+                    <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                        <div class="w3-rest">
+                            <input class="w3-input w3-border" name="confirmar_email" id="confirmar_email" type="text" placeholder="Confirmar Email" >
+                        </div>
                     </div>
-                </div>
 
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" name="senha" id="senha" type="password" placeholder="Senha" >
+                    <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
+                        <div class="w3-rest">
+                            <input class="w3-input w3-border" name="senha" id="senha" type="password" placeholder="Senha" >
+                        </div>
                     </div>
-                </div>
 
-                <p class="w3-left">
-                    <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Salvar </button>
-                    <?php if ($this->router->fetch_class() == 'Admin'): ?>
-                        <button onclick="location.href='<?php echo base_url('usuarios_admin');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
-                    <?php else: ?>
-                        <button onclick="location.href='<?php echo base_url('Login');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
-                    <?php endif; ?>
-                </p>
-            </form>
+                    <p class="w3-left">
+                        <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Salvar </button>
+                        <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                            <button onclick="location.href='<?php echo base_url('usuarios_admin');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
+                        <?php else: ?>
+                            <button onclick="location.href='<?php echo base_url('Login');?>'" type="button" class="w3-btn w3-section w3-black w3-ripple">Cancelar</button>
+                        <?php endif; ?>
+                    </p>
+                </form>
+            </div>
 
         </div>
 

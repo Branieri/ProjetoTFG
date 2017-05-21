@@ -7,8 +7,6 @@
 
             <?php $this->load->view('commons/menupagina')?>
 
-
-
             <div class="w3-container ">
 
                 <?php if ($this->router->fetch_class() == 'Aluno' || $this->router->fetch_class() == 'Professor'): ?>
@@ -18,20 +16,21 @@
                         <?php endif; ?>
                     </div>
                     <?php echo validation_errors();?>
+                    <div class="w3-container w3-content">
+                        <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Professor') ? base_url('cadastracursos_professor') : base_url('cadastracursos_aluno');?>">
+                            <h2 class="w3-left">Novo Curso</h2>
 
-                    <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Professor') ? base_url('cadastracursos_professor') : base_url('cadastracursos_aluno');?>">
-                        <h2 class="w3-left">Novo Curso</h2>
-
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-book"></i></div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" name="PIN" id="PIN" type="text" placeholder="Digite o PIN">
+                            <div class="w3-row w3-section">
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-book"></i></div>
+                                <div class="w3-rest">
+                                    <input class="w3-input w3-border" name="PIN" id="PIN" type="text" placeholder="Digite o PIN">
+                                </div>
                             </div>
-                        </div>
-                        <p class="w3-left">
-                            <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Cadastrar </button>
-                        </p>
-                    </form>
+                            <p class="w3-left">
+                                <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Cadastrar </button>
+                            </p>
+                        </form>
+                    </div>
                 <?php endif; ?>
 
                 <table class="w3-table-all">
@@ -60,7 +59,7 @@
                                         <?php elseif ($this->router->fetch_class() == 'Professor' && $this->router->fetch_method() == 'CursosUsuario'): ?>
                                             <td><a href="<?=base_url('editarcurso_professor')."/".$row['PIN']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluircursousuario_professor')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
                                         <?php elseif ($this->router->fetch_class() == 'Aluno' && $this->router->fetch_method() == 'CursosUsuario'): ?>
-                                            <td><a href="<?=base_url('excluircursousuario_aluno')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                            <td><a href="<?=base_url("realizacurso_aluno")."/".$row['PIN']?>"><i class="w3-xlarge fa fa-pencil"></i></a><a href="<?=base_url('excluircursousuario_aluno')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
                                         <?php endif; ?>
                                     </tr>
                                 <?php endforeach;?>
