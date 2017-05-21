@@ -1,7 +1,7 @@
             <!-- Footer -->
             <footer class="w3-container w3-padding-16 w3-light-grey">
                 <h4>CodingRace</h4>
-                <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">Bruno Ranieri</a></p>
+                <p>Powered by <a href="https://www.facebook.com/Bruno.Ranieri.M.Galvao" target="_blank">Bruno Ranieri</a></p>
             </footer>
 
         <!-- End page content -->
