@@ -159,9 +159,6 @@ class Aluno extends MY_Controller
         if(is_null($pin))
             redirect('cursoscadastrados_aluno');
 
-        $ra = $this->usuario_has_curso_model->UsuariosCurso($pin);
-        $data['usuarios'] = $this->usuarios_model->GetBySomeRa($ra);
-
         $idTopico = $this->curso_has_topico_model->TopicosCursos($pin);
         $data['topicos'] = $this->topicos_model->GetBySomeId($idTopico);
 

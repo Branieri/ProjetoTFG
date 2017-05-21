@@ -89,6 +89,8 @@ $route['atualizartopico_admin'] = 'Admin/AtualizaTopico';
 /** Rotas para Exercícios */
 $route['salvarexercicio_admin/(:num)'] = 'Admin/CadExercicio/$1';
 $route['excluirexercicio_admin/(:num)/(:num)'] = 'Admin/ExcluiExercicioTopico/$1/$2';
+$route['editarexercicio_admin/(:num)'] = 'Admin/EditaExercicio/$1';
+$route['atualizarexercicio_admin/(:num)/(:num)'] = 'Admin/AtualizaExercicio/$1/$2';
 
 /** Rotas para Professores */
 
@@ -122,6 +124,8 @@ $route['atualizartopico_professor'] = 'Professor/AtualizaTopico';
 /** Rotas para Exercícios */
 $route['salvarexercicio_professor/(:num)'] = 'Professor/CadExercicio/$1';
 $route['excluirexercicio_professor/(:num)/(:num)'] = 'Professor/ExcluiExercicioTopico/$1/$2';
+$route['editarexercicio_professor/(:num)'] = 'Professor/EditaExercicio/$1';
+$route['atualizarexercicio_professor/(:num)/(:num)'] = 'Professor/AtualizaExercicio/$1/$2';
 
 /** Rotas para Alunos */
 

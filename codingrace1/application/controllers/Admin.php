@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function CadUsuario()
         {
             $this->load->model('usuarios_model');
-            $validacao = self::Validar('novo_usuario');
+            $validacao = self::Validar('usuario');
 
             $data['nome'] = $this->session->userdata('nome');
             $data['ra'] = $this->session->userdata('ra');
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function AtualizaUsuario()
         {
             $this->load->model('usuarios_model');
-            $validacao = self::Validar('editar_usuario');
+            $validacao = self::Validar('edita_usuario');
             $ra = $this->input->post('ra');
 
             if($validacao) {
@@ -190,7 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function CadCurso(){
 
             $this->load->model('cursos_model');
-            $validacao = self::Validar('novo_curso');
+            $validacao = self::Validar('curso');
 
             $data['nome'] = $this->session->userdata('nome');
             $data['ra'] = $this->session->userdata('ra');
@@ -246,7 +246,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function AtualizaCurso(){
             $this->load->model('cursos_model');
-            $validacao = self::Validar('editar_curso');
+            $validacao = self::Validar('edita_curso');
             $pin = $this->input->post('pin');
 
             if($validacao) {
@@ -330,7 +330,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function CadTopico()
         {
             $this->load->model('topicos_model');
-            $validacao = self::Validar('novo_topico');
+            $validacao = self::Validar('topico');
 
             $data['nome'] = $this->session->userdata('nome');
             $data['ra'] = $this->session->userdata('ra');
@@ -408,7 +408,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function AtualizaTopico()
         {
             $this->load->model('topicos_model');
-            $validacao = self::Validar('editar_topico');
+            $validacao = self::Validar('topico');
             $id = $this->input->post('id');
 
             if($validacao) {
@@ -475,7 +475,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function CadExercicio($idTopico){
             $this->load->model('exercicio_model');
             $this->load->model('qme_model');
-            $validacao = self::Validar('novo_exercicio');
+            $validacao = self::Validar('exercicio');
 
             $data['nome'] = $this->session->userdata('nome');
             $data['topico'] = $idTopico;
@@ -574,42 +574,109 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
 
+        public function EditaExercicio($idExercicio){
+            $this->load->model('exercicio_model');
+            $this->load->model('qme_model');
+
+            $data['exercicio'] = $this->exercicio_model->GetById($idExercicio);
+            $data['alternativas'] = $this->qme_model->GetByIdExercicio($idExercicio);
+
+            $data['nome'] = $this->session->userdata('nome');
+            $data['ra'] = $this->session->userdata('ra');
+            $data['title'] = "Projeto TFG - Edita Exercício";
+            $data['header'] = "Edita Exercício";
+
+            /** Carrega a view */
+            $this->load->view('commons/header',$data);
+            $this->load->view('exercicio/editaexercicio_view');
+            $this->load->view('commons/footer');
+
+        }
+
+        public function AtualizaExercicio($idExercicio, $idTopico){
+
+            $this->load->model('exercicio_model');
+            $this->load->model('qme_model');
+            $validacao = self::Validar('exercicio');
+
+            $id = $idExercicio;
+
+            if($validacao) {
+                $exercicio = $this->input->post('exercicio');
+                $bloom = $this->input->post('bloom');
+                $tipo_exercicio = $this->input->post('tipo_exercicio');
+                $opcaoa = $this->input->post('opcaoa');
+                $opcaob = $this->input->post('opcaob');
+                $opcaoc = $this->input->post('opcaoc');
+                $opcaod = $this->input->post('opcaod');
+                $opcaoe = $this->input->post('opcaoe');
+                $resposta_certa = $this->input->post('opcao_correta');
+                $dados_exercicio = array(
+                    'Pergunta' => $exercicio,
+                    'Categoria_Bloom' => $bloom,
+                    'Tipo_Exercicio' => $tipo_exercicio,
+                );
+
+                $status = $this->exercicio_model->AtualizaExercicio($idExercicio, $dados_exercicio);
+
+                if(!$status){
+                    $this->session->set_flashdata('error', 'Não foi possível atualizar o Exercício.');
+                    self::EditaTopico($idTopico);
+                }else{
+                    $dados_resposta = array(
+                        'itemA' => $opcaoa,
+                        'itemB' => $opcaob,
+                        'itemC' => $opcaoc,
+                        'itemD' => $opcaod,
+                        'itemE' => $opcaoe,
+                        'Alternativa' => $resposta_certa,
+                    );
+                }
+                $status2 = $this->qme_model->AtualizaQME($idExercicio, $dados_resposta);
+                if (!$status2) {
+                    $this->session->set_flashdata('error', 'Não foi possível atualizar o Exercício.');
+                    self::EditaTopico($idTopico);
+                } else {
+                    $this->session->set_flashdata('success', 'Exercício atualizado com sucesso.');
+                    self::EditaTopico($idTopico);
+                }
+            }else{
+                self::EditaTopico($idTopico);
+            }
+        }
+
         /** Função para Validar Operações */
 
         public function Validar($operacao)
         {
-            if($operacao == 'novo_usuario') {
+            if($operacao == 'usuario') {
                 $this->form_validation->set_rules('ra', 'RA', 'required|is_unique[Usuario.RA]');
                 $this->form_validation->set_rules('nome', 'Nome', 'required');
                 $this->form_validation->set_rules('senha', 'Senha', 'required');
                 $this->form_validation->set_rules('email', 'Email', 'required');
                 $this->form_validation->set_rules('confirmar_email', 'Confirmar Email', 'required|matches[email]');
                 $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-            }elseif ($operacao == 'editar_usuario'){
-                $this->form_validation->set_rules('ra', 'RA', 'required');
+            }elseif ($operacao == 'edita_usuario'){
                 $this->form_validation->set_rules('nome', 'Nome', 'required');
+                $this->form_validation->set_rules('senha', 'Senha', 'required');
                 $this->form_validation->set_rules('email', 'Email', 'required');
                 $this->form_validation->set_rules('confirmar_email', 'Confirmar Email', 'required|matches[email]');
                 $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-            }elseif ($operacao == 'novo_curso'){
-                $this->form_validation->set_rules('pin', 'PIN', 'required|is_unique[Curso.PIN]');
-                $this->form_validation->set_rules('nome', 'Nome', 'required');
-                $this->form_validation->set_rules('ano', 'Ano', 'required');
-                $this->form_validation->set_rules('periodo', 'Periodo', 'required');
-                $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-            }elseif ($operacao == 'editar_curso'){
+            }elseif ($operacao == 'curso') {
                 $this->form_validation->set_rules('pin', 'PIN', 'required');
                 $this->form_validation->set_rules('nome', 'Nome', 'required');
                 $this->form_validation->set_rules('ano', 'Ano', 'required');
                 $this->form_validation->set_rules('periodo', 'Periodo', 'required');
                 $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-            }elseif ($operacao == 'novo_topico'){
+            }elseif ($operacao == 'edita_curso'){
+                $this->form_validation->set_rules('nome', 'Nome', 'required');
+                $this->form_validation->set_rules('ano', 'Ano', 'required');
+                $this->form_validation->set_rules('periodo', 'Periodo', 'required');
+                $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+            }elseif ($operacao == 'topico'){
                 $this->form_validation->set_rules('nome', 'Nome', 'required');
                 $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-            }elseif ($operacao == 'editar_topico'){
-                $this->form_validation->set_rules('nome', 'Nome', 'required');
-                $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-            }elseif ($operacao == 'novo_exercicio'){
+            }elseif ($operacao == 'exercicio'){
                 $this->form_validation->set_rules('exercicio', 'Pergunta', 'required');
                 $this->form_validation->set_rules('bloom', 'Categoria de Bloom', 'required');
                 $this->form_validation->set_rules('tipo_exercicio', 'Tipo de Exercício', 'required');
