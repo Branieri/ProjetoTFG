@@ -58,17 +58,19 @@
                         </div>
                     </div>
 
-                    <div class="w3-row w3-section">
-                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-code"></i></div>
-                        <div class="w3-container w3-left">
-                            <select name="tipo_usuario" id="tipo_usuario" form="form_novousuario">
-                                <option value="-1">Selecione...</option>
-                                <option value="0">Administrador</option>
-                                <option value="1">Professor</option>
-                                <option value="2">Aluno</option>
-                            </select>
+                    <?php if ($this->router->fetch_class() == 'Admin'): ?>
+                        <div class="w3-row w3-section">
+                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-code"></i></div>
+                            <div class="w3-container w3-left">
+                                <select name="tipo_usuario" id="tipo_usuario" form="form_novousuario">
+                                    <option value="-1">Selecione...</option>
+                                    <option value="0">Administrador</option>
+                                    <option value="1">Professor</option>
+                                    <option value="2">Aluno</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
 
                     <p class="w3-left">
                         <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> Salvar </button>
