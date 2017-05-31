@@ -14,9 +14,7 @@
                             <th>Nome</th>
                             <th>RA</th>
                             <th>E-mail</th>
-                            <?php if ($this->router->fetch_class() == 'Admin'): ?>
-                                <th>Operações</th>
-                            <?php endif; ?>
+                            <th>Operações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,8 +26,10 @@
                                     <td><?=$row['Nome']?></td>
                                     <td><?=$row['RA']?></td>
                                     <td><?=$row['Email']?></td>
-                                    <?php if ($this->router->fetch_class() == 'Admin'): ?>
-                                        <td><a href="<?=base_url('editarusuario_admin')."/".$row['RA']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirusuario_admin')."/".$row['RA']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                    <?php if ($ra != $row['RA']): ?>
+                                        <td><a href="<?=base_url('editarusuario_admin')."/".$row['RA']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluirusuario_admin')."/".$row['RA']?>" onclick="return confirm('Tem certeza que deseja excluir o usuário <?=$row['Nome']?>?')"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                    <?php else: ?>
+                                        <td><a href="<?=base_url('editarusuario_admin')."/".$row['RA']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a>
                                     <?php endif; ?>
                                 </tr>
                             <?php endforeach;?>

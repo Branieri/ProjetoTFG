@@ -38,6 +38,19 @@ class Exercicio_model extends MY_Model
         }
     }
 
+    function GetByTopicoOrderByBloom($idTopico, $sort = 'Categoria_Bloom', $order = 'asc'){
+        if(is_null($idTopico))
+            return false;
+        $this->db->where('Topico_idTopico', $idTopico);
+        $this->db->order_by($sort, $order);
+        $query = $this->db->get($this->table);
+        if ($query->num_rows() > 0){
+            return $query->result_array();
+        } else {
+            return null;
+        }
+    }
+
     function AtualizaExercicio($id, $data) {
         if(is_null($id) || !isset($data))
             return false;

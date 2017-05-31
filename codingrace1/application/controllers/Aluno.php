@@ -108,7 +108,7 @@ class Aluno extends MY_Controller
         $this->load->view('commons/footer');
     }
 
-    public function CadCursoUsuario($pin){
+    public function CadCursoUsuario(){
         $this->load->model('usuario_has_curso_model');
         $ra = $this->session->userdata('ra');
         $pin = $this->input->post('PIN');
@@ -118,21 +118,26 @@ class Aluno extends MY_Controller
             'Curso_PIN' => $pin,
         );
 
-        $validacurso = $this->usuario_has_curso_model->BuscaCursoCadastrado($ra, $pin);
+        if(is_null($pin) || $pin == ""){
+            echo "<script> window.alert('Favor inserir um curso')</script>";
+            $this->CursosUsuario();
+        }else {
 
-        if ($validacurso){
-            $status = $this->usuario_has_curso_model->Inserir($dados_curso_cadastrado);
-            if(!$status)
-            {
-                $this->session->set_flashdata('error', 'Não foi possível cadastrar o curso!');
-                redirect('cursoscadastrados_aluno');
-            }else{
-                $this->session->set_flashdata('success', 'Curso cadastrado com sucesso!');
-                redirect('cursoscadastrados_aluno');
+            $validacurso = $this->usuario_has_curso_model->BuscaCursoCadastrado($ra, $pin);
+
+            if ($validacurso) {
+                $status = $this->usuario_has_curso_model->Inserir($dados_curso_cadastrado);
+                if (!$status) {
+                    $this->session->set_flashdata('error', 'Não foi possível cadastrar o curso!');
+                    redirect('cursoscadastrados_professor');
+                } else {
+                    $this->session->set_flashdata('success', 'Curso cadastrado com sucesso!');
+                    redirect('cursoscadastrados_professor');
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Curso já cadastrado para esse Usuário!');
+                redirect('cursoscadastrados_professor');
             }
-        }else{
-            $this->session->set_flashdata('error', 'Curso já cadastrado para esse Usuário!');
-            redirect('cursoscadastrados_aluno');
         }
     }
 
@@ -171,6 +176,98 @@ class Aluno extends MY_Controller
         $this->load->view('commons/header',$data);
         $this->load->view('cursos_alunos/cursoaluno_view');
         $this->load->view('commons/footer');
+    }
+
+    /** FUnções para resolução do Exercício */
+
+    public function ExerciciosTopico($idTopico){
+        $this->load->model('exercicio_model');
+        $this->load->model('usuarios_has_resposta_model');
+
+        $data['exercicios'] = $this->exercicio_model->GetByTopicoOrderByBloom($idTopico);
+
+
+
+        $data['nome'] = $this->session->userdata('nome');
+        $data['ra'] = $this->session->userdata('ra');
+        $data['title'] = "Projeto TFG - Exercícios ";
+        $data['header'] = "Exercícios";
+
+        /** Carrega a view */
+        $this->load->view('commons/header',$data);
+        $this->load->view('exercicio/exercicios_view');
+        $this->load->view('commons/footer');
+    }
+
+    function RealizaExercicio($idExercicio){
+        $this->load->model('exercicio_model');
+        $this->load->model('qme_model');
+
+        $data['exercicio'] = $this->exercicio_model->GetById($idExercicio);
+        $data['alternativas'] = $this->qme_model->GetByIdExercicio($idExercicio);
+
+        $data['nome'] = $this->session->userdata('nome');
+        $data['ra'] = $this->session->userdata('ra');
+        $data['title'] = "Projeto TFG - Exercício";
+        $data['header'] = "Exercício";
+
+        /** Carrega a view */
+        $this->load->view('commons/header',$data);
+        $this->load->view('exercicio/realizaexercicio_view');
+        $this->load->view('commons/footer');
+
+    }
+
+    public function ConfereExercicio($idExercicio){
+        $this->load->model('exercicio_model');
+        $this->load->model('qme_model');
+        $this->load->model('usuario_has_resposta_model');
+
+        $opcao = $this->input->post('opcao');
+
+        $exercicio = $this->exercicio_model->GetById($idExercicio);
+        $alternativa = $this->qme_model->GetByIdExercicio($idExercicio);
+
+        if($opcao == $alternativa['Alternativa']){
+            echo "<script> window.alert('Resposta Correta!!')</script>";
+            $ra = $this->session->userdata('ra');
+            $timestamp = time();
+            $dados_resposta = array(
+                'Usuario_RA' => $ra,
+                'Exercicio_idExercicio' => $idExercicio,
+                'Historico_Respostas' => $timestamp,
+                'Dificuldade' => 1,
+                'Resposta' => $opcao,
+            );
+            $status = $this->usuario_has_resposta_model->Inserir($dados_resposta);
+            if (!$status){
+                $this->session->set_flashdata('error', 'Não foi possível inserir o histórico!');
+                self::ExerciciosTopico($exercicio['Topico_idTopico']);
+            } else {
+                $this->session->set_flashdata('error', 'Histórico inserido com sucesso!');
+                self::ExerciciosTopico($exercicio['Topico_idTopico']);
+            }
+        } else {
+            echo "<script> window.alert('Resposta Incorreta!!')</script>";
+            $ra = $this->session->userdata('ra');
+            $timestamp = time();
+            $dados_resposta = array(
+                'Usuario_RA' => $ra,
+                'Exercicio_idExercicio' => $idExercicio,
+                'Historico_Respostas' => $timestamp,
+                'Dificuldade' => 1,
+                'Resposta' => $opcao,
+            );
+            $status = $this->usuario_has_resposta_model->Inserir($dados_resposta);
+            if (!$status){
+                $this->session->set_flashdata('error', 'Não foi possível inserir o histórico!');
+                self::RealizaExercicio($idExercicio);
+            } else {
+                $this->session->set_flashdata('error', 'Histórico inserido com sucesso!');
+                self::RealizaExercicio($idExercicio);
+            }
+        }
+
     }
 
     public function Validar($operacao)

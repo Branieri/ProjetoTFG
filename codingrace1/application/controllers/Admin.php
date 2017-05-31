@@ -62,40 +62,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $data['title'] = "Projeto TFG - Novo Usuário";
             $data['header'] = "Novo Usuário";
 
-            if ($validacao){
-                $nome = $this->input->post('nome');
-                $senha = $this->input->post('senha');
-                $email = $this->input->post('email');
-                $ra = $this->input->post('ra');
-                $dados_usuario = array(
-                    'Nome' => $nome,
-                    'Email' => $email,
-                    'Senha' => $senha,
-                    'RA' => $ra,
-                    'Status' => 0,
-                    'Tipo_Usuario' => 0
-                );
-                $status = $this->usuarios_model->Inserir($dados_usuario);
-                if(!$status)
-                {
-                    $this->session->set_flashdata('error', 'Não foi possível inserir o usuário!');
-
-                    /** Carrega a view */
-                    $this->load->view('commons/header',$data);
-                    $this->load->view('usuario/novousuario_view');
-                    $this->load->view('commons/footer');
-
-                }else{
-                    $this->session->set_flashdata('success', 'Usuário inserido com sucesso!');
-                    redirect('usuarios_admin');
-                }
-            }else{
-
+            if($this->input->post('tipo_usuario') == -1){
+                echo "<script> window.alert('Selecione o tipo de usuário')</script>";
                 /** Carrega a view */
-                $this->load->view('commons/header',$data);
+                $this->load->view('commons/header', $data);
                 $this->load->view('usuario/novousuario_view');
                 $this->load->view('commons/footer');
+            } else {
+                if ($validacao) {
+                    $nome = $this->input->post('nome');
+                    $senha = $this->input->post('senha');
+                    $email = $this->input->post('email');
+                    $ra = $this->input->post('ra');
+                    $dados_usuario = array(
+                        'Nome' => $nome,
+                        'Email' => $email,
+                        'Senha' => $senha,
+                        'RA' => $ra,
+                        'Status' => 0,
+                        'Tipo_Usuario' => 0
+                    );
+                    $status = $this->usuarios_model->Inserir($dados_usuario);
+                    if (!$status) {
+                        $this->session->set_flashdata('error', 'Não foi possível inserir o usuário!');
 
+                        /** Carrega a view */
+                        $this->load->view('commons/header', $data);
+                        $this->load->view('usuario/novousuario_view');
+                        $this->load->view('commons/footer');
+
+                    } else {
+                        $this->session->set_flashdata('success', 'Usuário inserido com sucesso!');
+                        redirect('usuarios_admin');
+                    }
+                } else {
+
+                    /** Carrega a view */
+                    $this->load->view('commons/header', $data);
+                    $this->load->view('usuario/novousuario_view');
+                    $this->load->view('commons/footer');
+                }
             }
 
         }
@@ -109,10 +115,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             if($validacao) {
                 $nome = $this->input->post('nome');
                 $email = $this->input->post('email');
+                $tipo_usuario = $this->input->post('tipo_usuario');
 
                 $dados_usuario = array(
                     'Nome' => $nome,
                     'Email' => $email,
+                    'Tipo_Usuario' => $tipo_usuario,
                 );
 
                 $status = $this->usuarios_model->AtualizaUsuario($ra, $dados_usuario);
@@ -365,29 +373,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         }
 
-        public function CadTopicoCurso($idTopico, $pin){
+        public function CadTopicoCurso($pin){
             $this->load->model('curso_has_topico_model');
+            $idTopico = $this->input->post('Topicos_Lista');
 
-            $dados_topico_cadastrado = array(
-                'Topico_idTopico' => $idTopico,
-                'Curso_PIN' => $pin,
-            );
+            if ($idTopico == 0){
 
-            $validacurso = $this->curso_has_topico_model->BuscaTopicoCadastrado($idTopico, $pin);
+                echo "<script> window.alert('Selecione um Tópico')</script>";
+                $this->EditaCurso($pin);
 
-            if ($validacurso){
-                $status = $this->curso_has_topico_model->Inserir($dados_topico_cadastrado);
-                if(!$status)
-                {
-                    $this->session->set_flashdata('error', 'Não foi possível cadastrar o tópico!');
-                    $this->EditaCurso($pin);
+            } else {
+                $dados_topico_cadastrado = array(
+                    'Topico_idTopico' => $idTopico,
+                    'Curso_PIN' => $pin,
+                );
+
+                $validacurso = $this->curso_has_topico_model->BuscaTopicoCadastrado($idTopico, $pin);
+
+                if ($validacurso){
+                    $status = $this->curso_has_topico_model->Inserir($dados_topico_cadastrado);
+                    if(!$status)
+                    {
+                        echo "<script> window.alert('Não foi possível cadastrar o tópico')</script>";
+                        $this->EditaCurso($pin);
+                    }else{
+                        echo "<script> window.alert('Tópico cadastrado com sucesso')</script>";
+                        $this->EditaCurso($pin);
+                    }
                 }else{
-                    $this->session->set_flashdata('success', 'Tópico cadastrado com sucesso!');
+                    echo "<script> window.alert('Tópico já cadastrado')</script>";
                     $this->EditaCurso($pin);
                 }
-            }else{
-                $this->session->set_flashdata('error', 'Tópico já cadastrado para esse Curso!');
-                $this->EditaCurso($pin);
             }
         }
 
@@ -635,13 +651,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $status2 = $this->qme_model->AtualizaQME($idExercicio, $dados_resposta);
                 if (!$status2) {
                     $this->session->set_flashdata('error', 'Não foi possível atualizar o Exercício.');
-                    self::EditaTopico($idTopico);
+                    self::EditaExercicio($idExercicio);
                 } else {
                     $this->session->set_flashdata('success', 'Exercício atualizado com sucesso.');
                     self::EditaTopico($idTopico);
                 }
             }else{
-                self::EditaTopico($idTopico);
+                self::EditaExercicio($idExercicio);
             }
         }
 
@@ -680,6 +696,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->form_validation->set_rules('exercicio', 'Pergunta', 'required');
                 $this->form_validation->set_rules('bloom', 'Categoria de Bloom', 'required');
                 $this->form_validation->set_rules('tipo_exercicio', 'Tipo de Exercício', 'required');
+                $this->form_validation->set_rules('opcaoa', 'Alternativa A', 'required');
+                $this->form_validation->set_rules('opcaob', 'Alternativa B', 'required');
+                $this->form_validation->set_rules('opcaoc', 'Alternativa C', 'required');
+                $this->form_validation->set_rules('opcaod', 'Alternativa D', 'required');
+                $this->form_validation->set_rules('opcaoe', 'Alternativa E', 'required');
+                $this->form_validation->set_rules('opcao_correta', 'Alternatia Correta', 'required');
                 $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
             }
 

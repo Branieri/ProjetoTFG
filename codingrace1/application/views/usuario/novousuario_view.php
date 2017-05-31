@@ -20,7 +20,7 @@
             </div>
             <?php echo validation_errors();?>
             <div class="w3-container w3-content">
-                <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data">
+                <form class="w3-container w3-light-grey w3-text-black w3-margin" id="form_novousuario" method="post" enctype="multipart/form-data">
                     <h2 class="w3-center">Novo Usuário</h2>
 
                     <div class="w3-row w3-section">
@@ -55,6 +55,18 @@
                         <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
                         <div class="w3-rest">
                             <input class="w3-input w3-border" name="senha" id="senha" type="password" placeholder="Senha" >
+                        </div>
+                    </div>
+
+                    <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-code"></i></div>
+                        <div class="w3-container w3-left">
+                            <select name="tipo_usuario" id="tipo_usuario" form="form_novousuario">
+                                <option value="-1">Selecione...</option>
+                                <option value="0">Administrador</option>
+                                <option value="1">Professor</option>
+                                <option value="2">Aluno</option>
+                            </select>
                         </div>
                     </div>
 

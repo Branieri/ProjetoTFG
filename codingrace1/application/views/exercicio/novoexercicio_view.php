@@ -14,7 +14,7 @@
             <?php endif; ?>
         </div>
         <?php echo validation_errors();?>
-        <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" id="form_novoexercicio">
+        <form class="w3-container w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" id="form_novoexercicio">
             <h2 class="w3-center">Novo Exercício</h2>
 
             <div class="w3-row w3-section">
@@ -28,7 +28,7 @@
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-code"></i></div>
                 <div class="w3-container w3-left">
                     <select name="bloom" id="bloom" form="form_novoexercicio">
-                        <option value="0">Selecione...</option>
+                        <option value="">Selecione...</option>
                         <option value="1">Lembrar</option>
                         <option value="2">Entender</option>
                         <option value="3">Aplicar</option>
@@ -38,6 +38,7 @@
                     </select>
                 </div>
             </div>
+
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-calendar"></i></div>
                 <div class="w3-rest">
@@ -82,8 +83,15 @@
 
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-book"></i></div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" name="opcao_correta" id="opcao_correta" type="text" placeholder="Resposta Correta" ></input>
+                <div class="w3-container w3-left">
+                    <select name="opcao_correta" id="opcao_correta" form="form_novoexercicio">
+                        <option value="">Selecione...</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select>
                 </div>
             </div>
 

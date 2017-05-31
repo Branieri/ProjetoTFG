@@ -14,7 +14,7 @@
                     <?php endif; ?>
                 </div>
                 <?php echo validation_errors();?>
-                <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('atualizarcurso_admin') : base_url('atualizarcurso_professor');?>">
+                <form class="w3-container w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('atualizarcurso_admin') : base_url('atualizarcurso_professor');?>">
                     <h2 class="w3-center">Editar Curso</h2>
 
                     <div class="w3-row w3-section">
@@ -113,29 +113,13 @@
                 <?php if ($topicostotal == FALSE): ?>
                     <tr><td colspan="2">Nenhum tópico encontrado</td></tr>
                 <?php else: ?>
-                    Novo Tópico<select name="Topicos" onchange="numero_topico(this)">
-                        <option>Selecione...</option>
-                        <?php foreach ($topicostotal as $row2): ?>
-                            <option value="<?=$row2['idTopico']?>"><?=$row2['Nome']?></option>
-                        <?php endforeach;?>
-                    </select>
+                    <form class="w3-container w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" id="form_adicionatopico" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('adicionartopicocurso_admin')."/".$curso['PIN'] : base_url('adicionartopicocurso_professor')."/".$curso['PIN'];?>">
+                        Novo Tópico: <select id="Topicos_Lista" name="Topicos_Lista" form="form_adicionatopico">
+                            <option value="0">Selecione...</option>
+                            <?php foreach ($topicostotal as $row2): ?>
+                                <option value="<?=$row2['idTopico']?>"><?=$row2['Nome']?></option>
+                            <?php endforeach;?>
+                        </select>
+                        <button class="w3-btn w3-section w3-black w3-ripple" type="submit" value="salvar"> <i class="w3-large fa fa-plus-square"></i> </button>
+                    </form>
                 <?php endif;?>
-                <?php if ($this->router->fetch_class() == 'Professor'): ?>
-                    <td><a href="<?=base_url('adicionartopicocurso_professor')."/numero_topico/".$curso['PIN']?>"  id="topico" style="text-decoration: none"><i class="w3-xlarge fa fa-plus-square">&nbsp;</i></a></td>
-                <?php else: ?>
-                    <td><a href="<?=base_url('adicionartopicocurso_admin')."/numero_topico/".$curso['PIN']?>"  id="topico" style="text-decoration: none"><i class="w3-xlarge fa fa-plus-square">&nbsp;</i></a></td>
-                <?php endif; ?>
-
-                <script language="JavaScript" type="text/javascript">
-                     function numero_topico(numero) {
-                        var $opcao = document.getElementById("topico");
-                        $opcao.href = $opcao.href.replace('numero_topico', numero.value);
-                     }
-                 </script>
-
-                <?php if ($this->session->flashdata('error') == TRUE): ?>
-                    <p><?php echo $this->session->flashdata('error'); ?></p>
-                <?php endif; ?>
-                <?php if ($this->session->flashdata('success') == TRUE): ?>
-                    <p><?php echo $this->session->flashdata('success'); ?></p>
-                <?php endif; ?>

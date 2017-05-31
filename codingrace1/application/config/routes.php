@@ -82,7 +82,7 @@ $route['topicos_admin'] = 'Admin/Topicos';
 $route['editartopico_admin/(:num)'] = 'Admin/EditaTopico/$1';
 $route['excluirtopico_admin/(:num)'] = 'Admin/ExcluiTopico/$1';
 $route['salvartopico_admin'] = 'Admin/CadTopico';
-$route['adicionartopicocurso_admin/(:num)/(:num)'] = 'Admin/CadTopicoCurso/$1/$2';
+$route['adicionartopicocurso_admin/(:num)'] = 'Admin/CadTopicoCurso/$1';
 $route['excluirtopicocurso_admin/(:num)/(:num)'] = 'Admin/ExcluiTopicoCurso/$1/$2';
 $route['atualizartopico_admin'] = 'Admin/AtualizaTopico';
 
@@ -117,7 +117,7 @@ $route['topicos_professor'] = 'Professor/Topicos';
 $route['editartopico_professor/(:num)'] = 'Professor/EditaTopico/$1';
 $route['excluirtopico_professor/(:num)'] = 'Professor/ExcluiTopico/$1';
 $route['salvartopico_professor'] = 'Professor/CadTopico';
-$route['adicionartopicocurso_professor/(:num)/(:num)'] = 'Professor/CadTopicoCurso/$1/$2';
+$route['adicionartopicocurso_professor/(:num)'] = 'Professor/CadTopicoCurso/$1';
 $route['excluirtopicocurso_professor/(:num)/(:num)'] = 'Professor/ExcluiTopicoCurso/$1/$2';
 $route['atualizartopico_professor'] = 'Professor/AtualizaTopico';
 
@@ -145,6 +145,12 @@ $route['cursoscadastrados_aluno'] = 'Aluno/CursosUsuario';
 $route['cadastracursos_aluno'] = 'Aluno/CadCursoUsuario';
 $route['excluircursousuario_aluno/(:num)'] = 'Aluno/ExcluiCursoUsuario/$1';
 
+/** Rotas para realizar exercicio Tópicos Aluno */
+$route['realizartopico_aluno/(:num)'] = 'Aluno/ExerciciosTopico/$1';
+
+/** Rotas para realizar exercicios */
+$route['realizaexercicio_aluno/(:num)'] = 'Aluno/RealizaExercicio/$1';
+$route['confereexercicio_aluno/(:num)'] = 'Aluno/ConfereExercicio/$1';
 
 /** Rota Logout */
 $route['logout'] = 'Login/Logout';

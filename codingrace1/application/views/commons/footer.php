@@ -14,6 +14,7 @@
             // Get the DIV with overlay effect
             var overlayBg = document.getElementById("myOverlay");
 
+
             // Toggle between showing and hiding the sidenav, and add overlay effect
             function w3_open() {
                 if (mySidenav.style.display === 'block') {
@@ -44,6 +45,10 @@
 
             function PegaDados() {
                 document.getElementById('editar').style.display='block'
+            }
+
+            function deletar(){
+                return confirm('Tem certeza?');
             }
         </script>
     </body>

@@ -17,7 +17,7 @@
                     </div>
                     <?php echo validation_errors();?>
                     <div class="w3-container w3-content">
-                        <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Professor') ? base_url('cadastracursos_professor') : base_url('cadastracursos_aluno');?>">
+                        <form class="w3-container w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Professor') ? base_url('cadastracursos_professor') : base_url('cadastracursos_aluno');?>">
                             <h2 class="w3-left">Novo Curso</h2>
 
                             <div class="w3-row w3-section">
@@ -59,7 +59,7 @@
                                         <?php elseif ($this->router->fetch_class() == 'Professor' && $this->router->fetch_method() == 'CursosUsuario'): ?>
                                             <td><a href="<?=base_url('editarcurso_professor')."/".$row['PIN']?>" style="text-decoration: none"><i class="w3-xlarge fa fa-edit">&nbsp;</i></a><a href="<?=base_url('excluircursousuario_professor')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
                                         <?php elseif ($this->router->fetch_class() == 'Aluno' && $this->router->fetch_method() == 'CursosUsuario'): ?>
-                                            <td><a href="<?=base_url("realizacurso_aluno")."/".$row['PIN']?>"><i class="w3-xlarge fa fa-pencil"></i></a><a href="<?=base_url('excluircursousuario_aluno')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
+                                            <td><a href="<?=base_url("realizacurso_aluno")."/".$row['PIN']?>"><i class="w3-xlarge fa fa-pencil">&nbsp;&nbsp;</i></a><a href="<?=base_url('excluircursousuario_aluno')."/".$row['PIN']?>"><i class="w3-xlarge fa fa-trash"></i></a></td>
                                         <?php endif; ?>
                                     </tr>
                                 <?php endforeach;?>

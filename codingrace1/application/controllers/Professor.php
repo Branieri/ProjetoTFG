@@ -182,24 +182,26 @@ class Professor extends MY_Controller
             'Curso_PIN' => $pin,
         );
 
-        if(is_null($pin))
-            redirect('cursoscadastrados_professor');
+        if(is_null($pin) || $pin == ""){
+            echo "<script> window.alert('Favor inserir um curso')</script>";
+            $this->CursosUsuario();
+        }else {
 
-        $validacurso = $this->usuario_has_curso_model->BuscaCursoCadastrado($ra, $pin);
+            $validacurso = $this->usuario_has_curso_model->BuscaCursoCadastrado($ra, $pin);
 
-        if ($validacurso){
-            $status = $this->usuario_has_curso_model->Inserir($dados_curso_cadastrado);
-            if(!$status)
-            {
-                $this->session->set_flashdata('error', 'Não foi possível cadastrar o curso!');
-                redirect('cursoscadastrados_professor\'');
-            }else{
-                $this->session->set_flashdata('success', 'Curso cadastrado com sucesso!');
+            if ($validacurso) {
+                $status = $this->usuario_has_curso_model->Inserir($dados_curso_cadastrado);
+                if (!$status) {
+                    $this->session->set_flashdata('error', 'Não foi possível cadastrar o curso!');
+                    redirect('cursoscadastrados_professor');
+                } else {
+                    $this->session->set_flashdata('success', 'Curso cadastrado com sucesso!');
+                    redirect('cursoscadastrados_professor');
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Curso já cadastrado para esse Usuário!');
                 redirect('cursoscadastrados_professor');
             }
-        }else{
-            $this->session->set_flashdata('error', 'Curso já cadastrado para esse Usuário!');
-            redirect('cursoscadastrados_professor\'');
         }
     }
 
@@ -265,7 +267,7 @@ class Professor extends MY_Controller
                 $this->load->view('commons/footer');
             }else{
                 $this->session->set_flashdata('success', 'Tópico inserido com sucesso!');
-                redirect('topicos_admin');
+                redirect('topicos_professor');
             }
         }else{
 
@@ -277,29 +279,37 @@ class Professor extends MY_Controller
 
     }
 
-    public function CadTopicoCurso($idTopico, $pin){
+    public function CadTopicoCurso($pin){
         $this->load->model('curso_has_topico_model');
+        $idTopico = $this->input->post('Topicos_Lista');
 
-        $dados_topico_cadastrado = array(
-            'Topico_idTopico' => $idTopico,
-            'Curso_PIN' => $pin,
-        );
+        if ($idTopico == 0){
 
-        $validacurso = $this->curso_has_topico_model->BuscaTopicoCadastrado($idTopico, $pin);
+            echo "<script> window.alert('Selecione um Tópico')</script>";
+            $this->EditaCurso($pin);
 
-        if ($validacurso){
-            $status = $this->curso_has_topico_model->Inserir($dados_topico_cadastrado);
-            if(!$status)
-            {
-                $this->session->set_flashdata('error', 'Não foi possível cadastrar o tópico!');
-                $this->EditaCurso($pin);
+        } else {
+            $dados_topico_cadastrado = array(
+                'Topico_idTopico' => $idTopico,
+                'Curso_PIN' => $pin,
+            );
+
+            $validacurso = $this->curso_has_topico_model->BuscaTopicoCadastrado($idTopico, $pin);
+
+            if ($validacurso){
+                $status = $this->curso_has_topico_model->Inserir($dados_topico_cadastrado);
+                if(!$status)
+                {
+                    echo "<script> window.alert('Não foi possível cadastrar o tópico')</script>";
+                    $this->EditaCurso($pin);
+                }else{
+                    echo "<script> window.alert('Tópico cadastrado com sucesso')</script>";
+                    $this->EditaCurso($pin);
+                }
             }else{
-                $this->session->set_flashdata('success', 'Tópico cadastrado com sucesso!');
+                echo "<script> window.alert('Tópico já cadastrado')</script>";
                 $this->EditaCurso($pin);
             }
-        }else{
-            $this->session->set_flashdata('error', 'Tópico já cadastrado para esse Curso!');
-            $this->EditaCurso($pin);
         }
     }
 
@@ -575,6 +585,12 @@ class Professor extends MY_Controller
             $this->form_validation->set_rules('exercicio', 'Pergunta', 'required');
             $this->form_validation->set_rules('bloom', 'Categoria de Bloom', 'required');
             $this->form_validation->set_rules('tipo_exercicio', 'Tipo de Exercício', 'required');
+            $this->form_validation->set_rules('opcaoa', 'Alternativa A', 'required');
+            $this->form_validation->set_rules('opcaob', 'Alternativa B', 'required');
+            $this->form_validation->set_rules('opcaoc', 'Alternativa C', 'required');
+            $this->form_validation->set_rules('opcaod', 'Alternativa D', 'required');
+            $this->form_validation->set_rules('opcaoe', 'Alternativa E', 'required');
+            $this->form_validation->set_rules('opcao_correta', 'Alternatia Correta', 'required');
             $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         }
 

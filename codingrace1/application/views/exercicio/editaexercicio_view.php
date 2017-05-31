@@ -14,7 +14,7 @@
             <?php endif; ?>
         </div>
         <?php echo validation_errors();?>
-        <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" id="form_editarexercicio" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('atualizarexercicio_admin')."/".$exercicio['idExercicio']."/".$exercicio['Topico_idTopico'] : base_url('atualizarexercicio_professor')."/".$exercicio['idExercicio']."/".$exercicio['Topico_idTopico'];?>">
+        <form class="w3-container w3-light-grey w3-text-black w3-margin" method="post" id="form_editarexercicio" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('atualizarexercicio_admin')."/".$exercicio['idExercicio']."/".$exercicio['Topico_idTopico'] : base_url('atualizarexercicio_professor')."/".$exercicio['idExercicio']."/".$exercicio['Topico_idTopico'];?>">
             <h2 class="w3-center">Editar Exercício</h2>
 
             <div class="w3-row w3-section">
@@ -28,7 +28,6 @@
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-code"></i></div>
                 <div class="w3-container w3-left">
                     <select name="bloom" id="bloom" form="form_editarexercicio">
-                        <option value="0" <?=($exercicio['Categoria_Bloom'] == 0) ? 'selected' : '' ;?>>Selecione...</option>
                         <option value="1" <?=($exercicio['Categoria_Bloom'] == 1) ? 'selected' : '' ;?>>Lembrar</option>
                         <option value="2" <?=($exercicio['Categoria_Bloom'] == 2) ? 'selected' : '' ;?>>Entender</option>
                         <option value="3" <?=($exercicio['Categoria_Bloom'] == 3) ? 'selected' : '' ;?>>Aplicar</option>
@@ -82,8 +81,14 @@
 
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-book"></i></div>
-                <div class="w3-rest">
-                    <input class="w3-input w3-border" name="opcao_correta" id="opcao_correta" type="text" value="<?php echo $alternativas['Alternativa']?>">
+                <div class="w3-container w3-left">
+                    <select name="opcao_correta" id="opcao_correta" form="form_editarexercicio">
+                        <option value="A" <?=($alternativas['Alternativa'] == "A") ? 'selected' : '' ;?>>A</option>
+                        <option value="B" <?=($alternativas['Alternativa'] == "B") ? 'selected' : '' ;?>>B</option>
+                        <option value="C" <?=($alternativas['Alternativa'] == "C") ? 'selected' : '' ;?>>C</option>
+                        <option value="D" <?=($alternativas['Alternativa'] == "D") ? 'selected' : '' ;?>>D</option>
+                        <option value="E" <?=($alternativas['Alternativa'] == "E") ? 'selected' : '' ;?>>E</option>
+                    </select>
                 </div>
             </div>
 

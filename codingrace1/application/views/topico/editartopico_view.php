@@ -14,7 +14,7 @@
             <?php endif; ?>
         </div>
         <?php echo validation_errors();?>
-        <form class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('atualizartopico_admin') : base_url('atualizartopico_professor');?>">
+        <form class="w3-container w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=($this->router->fetch_class() == 'Admin') ? base_url('atualizartopico_admin') : base_url('atualizartopico_professor');?>">
             <h2 class="w3-center">Editar Tópico</h2>
 
             <div class="w3-row w3-section">
