@@ -23,13 +23,13 @@ class Usuario_has_curso_model extends MY_Model
         }
     }
 
-    public function QuantidadeCursosUsuario($ra)
+    public function QuantidadeCursosUsuario($pin)
     {
-        if(is_null($ra))
+        if(is_null($pin))
             return false;
 
-        $this->db->select('Curso_PIN');
-        $this->db->where('Usuario_RA', $ra);
+        $this->db->select('Usuario_RA');
+        $this->db->where('Curso_PIN', $pin);
         $query = $this->db->get($this->table);
         return $query->num_rows();
     }

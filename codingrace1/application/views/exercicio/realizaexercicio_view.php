@@ -15,18 +15,18 @@
         </div>
         <?php echo validation_errors();?>
         <form class="w3-container w3-light-grey w3-text-black w3-margin" method="post" enctype="multipart/form-data" action="<?=base_url('confereexercicio_aluno')."/".$exercicio['idExercicio'];?>">
-            <h2 class="w3-center">Novo Curso</h2>
+            <h2 class="w3-center">Realiza Exercício</h2>
 
             <div class="w3-row w3-section">
                <p><?php echo $exercicio['Pergunta'];?></p>
             </div>
 
             <div class="w3-row w3-section">
-                <label>A) </label><input type="radio" name="opcao" id="opcao" value="A"/><?php echo $alternativas['itemA'];?>
-                <label>B) </label><input type="radio" name="opcao" id="opcao" value="B"/><?php echo $alternativas['itemB'];?>
-                <label>C) </label><input type="radio" name="opcao" id="opcao" value="C"/><?php echo $alternativas['itemC'];?>
-                <label>D) </label><input type="radio" name="opcao" id="opcao" value="D"><?php echo $alternativas['itemD'];?>
-                <label>E) </label><input type="radio" name="opcao" id="opcao" value="E"><?php echo $alternativas['itemE'];?>
+                <input type="radio" name="opcao" id="opcao" value="A"/>A) <?php echo $alternativas['itemA'];?><br>
+                <input type="radio" name="opcao" id="opcao" value="B"/>B) <?php echo $alternativas['itemB'];?><br>
+                <input type="radio" name="opcao" id="opcao" value="C"/>C) <?php echo $alternativas['itemC'];?><br>
+                <input type="radio" name="opcao" id="opcao" value="D"/>D) <?php echo $alternativas['itemD'];?><br>
+                <input type="radio" name="opcao" id="opcao" value="E"/>E)<?php echo $alternativas['itemE'];?>
             </div>
 
             <p class="w3-center">
