@@ -128,15 +128,15 @@ class Aluno extends MY_Controller
             if ($validacurso) {
                 $status = $this->usuario_has_curso_model->Inserir($dados_curso_cadastrado);
                 if (!$status) {
-                    $this->session->set_flashdata('error', 'Não foi possível cadastrar o curso!');
-                    redirect('cursoscadastrados_professor');
+                    echo "<script> window.alert('Não foi possível cadastrar o curso')</script>";
+                    $this->CursosUsuario();
                 } else {
-                    $this->session->set_flashdata('success', 'Curso cadastrado com sucesso!');
-                    redirect('cursoscadastrados_professor');
+                    echo "<script> window.alert('Curso cadastrado com sucesso')</script>";
+                    $this->CursosUsuario();
                 }
             } else {
-                $this->session->set_flashdata('error', 'Curso já cadastrado para esse Usuário!');
-                redirect('cursoscadastrados_professor');
+                echo "<script> window.alert('Curso já cadastrado para esse usuário')</script>";
+                $this->CursosUsuario();
             }
         }
     }
@@ -182,7 +182,7 @@ class Aluno extends MY_Controller
 
     public function ExerciciosTopico($idTopico){
         $this->load->model('exercicio_model');
-        $this->load->model('usuarios_has_resposta_model');
+        $this->load->model('usuario_has_resposta_model');
 
         $data['exercicios'] = $this->exercicio_model->GetByTopicoOrderByBloom($idTopico);
 

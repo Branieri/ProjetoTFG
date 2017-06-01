@@ -17,14 +17,7 @@ class Usuario_has_curso_model extends MY_Model
         $this->db->where('Curso_PIN', $pin);
         $query = $this->db->get($this->table);
         if ($query->num_rows() > 0) {
-            $professores = $query->result_array();
-            foreach ($professores as $ok){
-                if ($ok['Usuario_RA'] == $ra) {
-                    return false;
-                }else{
-                    return true;
-                }
-            }
+            return false;
         } else {
             return true;
         }

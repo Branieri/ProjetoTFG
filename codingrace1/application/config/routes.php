@@ -141,7 +141,6 @@ $route['cursos_aluno'] = 'Aluno/CursosUsuario';
 $route['realizacurso_aluno/(:num)'] = 'Aluno/Topicos_Cursos/$1';
 
 /** Rotas para cursos de usuario */
-$route['cursoscadastrados_aluno'] = 'Aluno/CursosUsuario';
 $route['cadastracursos_aluno'] = 'Aluno/CadCursoUsuario';
 $route['excluircursousuario_aluno/(:num)'] = 'Aluno/ExcluiCursoUsuario/$1';
 
